@@ -16,86 +16,10 @@
                             </ul>
                           </div>    
                         @endif
-                        {{-- inserisco i data --}}
-                        <div x-data=
-                        "{ 
-                            isValid: false,
-                            regex: /\d/,
+                        {{-- Data del form --}}
+                        <div x-data="alpine_validation">
 
-                            {{-- Data del Nome del Ristorante --}}
-                            restaurantName: '',
-                            restaurantNameMessage: '',
-                            restaurantNameError: false,
-                            isRestaruantNameValid: false,
-
-                            {{-- Data del Nome dell'utente --}}
-                            name: '',
-                            nameMessage: '',
-                            nameError: false,
-                            isNameValid: false,
-
-                            {{-- Data del Cognome dell'utente --}}
-                            lastname: '',
-                            lastnameMessage: '',
-                            lastnameError: false,
-                            isLastnameValid: false,
-
-                            {{-- Validazione Nome del ristorante --}}
-                            restaurantNameValidation() {
-                                this.isRestaruantNameValid = true;
-                                if (!this.restaurantName) {
-                                    this.restaurantNameMessage = 'Il campo è obbligatorio';
-                                    this.restaurantNameError = true;
-                                } else if (this.restaurantName.length < 5 && this.restaurantName.length >= 1) {
-                                    this.restaurantNameMessage = 'Il nome del ristorante deve avere più di 5 caratteri';
-                                    this.restaurantNameError = true;
-                                } else if (!isNaN(this.restaurantName) && this.restaurantName.length >= 1) {
-                                    this.restaurantNameMessage = 'Il nome del ristorante non può avere solo numeri';
-                                    this.restaurantNameError = true;
-                                } else {
-                                    this.restaurantNameError = false;
-                                    this.restaurantNameMessage = '';
-                                }
-                            },
-
-                            {{-- Validazione Nome dell'utente --}}
-                            nameValidation() {
-                                this.isNameValid = true;
-                                if (!this.name) {
-                                    this.nameMessage = 'Il campo è obbligatorio';
-                                    this.nameError = true;
-                                } else if (this.name.length < 2 && this.name.length >= 1) {
-                                    this.nameMessage = 'Il nome deve avere più di 2 caratteri';
-                                    this.nameError = true;
-                                } else if (this.regex.test(this.name) && this.name.length >= 1) {
-                                    this.nameMessage = 'Il nome non può contenere numeri';
-                                    this.nameError = true;
-                                } else {
-                                    this.nameError = false;
-                                    this.nameMessage = '';
-                                }
-                            },
-
-                            {{-- Validazione Cognome dell'utente --}}
-                            lastnameValidation() {
-                                this.isLastnameValid = true;
-                                if (!this.lastname) {
-                                    this.lastnameMessage = 'Il campo è obbligatorio';
-                                    this.lastnameError = true;
-                                } else if (this.lastname.length < 2 && this.lastname.length >= 1) {
-                                    this.lastnameMessage = 'Il cognome deve avere più di 2 caratteri';
-                                    this.lastnameError = true;
-                                } else if (this.regex.test(this.lastname) && this.lastname.length >= 1) {
-                                    this.lastnameMessage = 'Il cognome non può contenere numeri';
-                                    this.lastnameError = true;
-                                } else {
-                                    this.lastnameError = false;
-                                    this.lastnameMessage = '';
-                                }
-                            }
-                            
-                        
-                        }">
+                            {{-- Form --}}
                             <form @submit.prevent="!isValid" method="POST" action="{{ route('register') }}" id="registration-form" novalidate>
                                 @csrf
                                 <h2 class="mb-5">Registrazione</h2>
@@ -154,10 +78,10 @@
                                             Email
                                             <span class="text-danger"><strong><sup>*</sup></strong></span>
                                         </label>
-                                        <input placeholder="es: name@example.com" id="email" type="email" class="form-inputs form-control bg-transparent border-dark-light rounded-pill 
+                                        <input @blur="emailValidation" x-model="email" placeholder="es: name@example.com" id="email" type="email" :class="emailError ? 'is-invalid' : '' && !emailError || isEmailValid ? 'is-valid' : ''" class="form-inputs form-control bg-transparent border-dark-light rounded-pill 
                                         @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email"
                                         minlength="6">
-                                        <span class="invalid-message invalid-feedback ms-3"></span>
+                                        <span x-text="emailMessage" class="invalid-message invalid-feedback ms-3"></span>
         
                                         @error('email')
                                             <span class="invalid-feedback mx-3" role="alert">
