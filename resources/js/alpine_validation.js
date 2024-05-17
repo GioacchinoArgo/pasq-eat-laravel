@@ -246,6 +246,7 @@ export default () => ({
 
         this.fields.forEach(field => {
             this[field].validation();
+            if (field == 'password') this[field].confirmValidation();
             if (!this[field].isValid) e.preventDefault();
         })
 
