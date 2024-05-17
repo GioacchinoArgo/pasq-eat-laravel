@@ -22,11 +22,16 @@
                             restaurantName: '',
                             restaurantNameMessage: '',
                             restaurantNameError: false,
+                            isRestaruantNameValid: false,
 
                             restaurantNameValidation() {
+                                this.isRestaruantNameValid = !this.restaurantNameValid;
                                 if (!this.restaurantName) {
-                                    this.restaurantNameMessage = 'ciao';
+                                    this.restaurantNameMessage = 'il campo è obbligatorio';
                                     this.restaurantNameError = true;
+                                } else {
+                                    this.restaurantNameError = false;
+                                    
                                 }
                             }
                             
@@ -43,7 +48,7 @@
                                             Nome ristorante
                                             <span class="text-danger"><strong><sup>*</sup></strong></span>
                                         </label>
-                                        <input @blur="restaurantNameValidation" x-model="restaurantName" placeholder="Nome del ristorante" id="restaurant_name" type="text" :class="restaurantNameError ? 'is-invalid' : '' " class="form-inputs form-control bg-transparent border-dark-light rounded-pill @error('restaurant_name') is-invalid @enderror" name="restaurant_name" value="{{old('restaurant_name')}}" required autocomplete="restaurant_name" autofocus>
+                                        <input @blur="restaurantNameValidation" x-model="restaurantName" placeholder="Nome del ristorante" id="restaurant_name" type="text" :class="restaurantNameError ? 'is-invalid' : '' && !restaurantNameError || isRestaruantNameValid ? 'is-valid' : '' " class="form-inputs form-control bg-transparent border-dark-light rounded-pill @error('restaurant_name') is-invalid @enderror" name="restaurant_name" value="{{old('restaurant_name')}}" required autocomplete="restaurant_name" autofocus>
                                         <span x-text="restaurantNameMessage" class="invalid-message invalid-feedback ms-3"></span>
                                         @error('restaurant_name')
                                             <span class="invalid-feedback mx-3" role="alert">
