@@ -1,0 +1,131 @@
+.image-preview {
+    height: 75px;
+
+    img {
+        height: 100%;
+        width: auto;
+    }
+}
+
+// Table
+
+h1 {
+    font-size: 30px;
+    color: #fff;
+    font-weight: 300;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+table {
+    width: 100%;
+    table-layout: fixed;
+}
+
+.tbl-header {
+    background-color: rgba(255, 255, 255, 0.30);
+    border-radius: 20px 20px 0 0;
+}
+
+.tbl-content {
+    max-height: 600px;
+    overflow-x: auto;
+    margin-top: 0px;
+    border: 2px solid rgba(255, 255, 255, 0.30);
+    border-radius: 0 0 0 20px;
+}
+
+th {
+    padding: 20px 15px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 16px;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+td {
+    padding: 15px;
+    text-align: left;
+    vertical-align: middle;
+    font-weight: 600;
+    font-size: 16px;
+    color: #fff;
+    border-bottom: solid 1px rgba(255, 255, 255, 0.1);
+}
+
+tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.199);
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.index-img {
+    img {
+        height: 75px;
+        width: 75px;
+        box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.7);
+    }
+}
+
+// Scrollbar
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+
+.button-outline-light {
+    color: #f8f9fa !important;
+    background-color: transparent !important;
+    background-image: none;
+    border-color: #f8f9fa;
+    border: 2px solid #f8f9fa !important;
+    font-size: 16px !important;
+}
+
+.back:hover {
+    color: #f8f9fa !important;
+    background-color: #198754 !important;
+    border-color: #198754 !important;
+}
+
+.stamp {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+
+    border: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+.is-available {
+    background-color: green;
+}
+
+.not-available {
+    background-color: rgb(216, 9, 9);
+}
+
+#coruse-filter {
+    border: 2px solid $white;
+    background-position: top 20px;
+    background-image: url('https://eaglestrategiecommerciali.it/wp-content/uploads/2020/05/kisspng-arrow-computer-icons-logo-white-down-arrow-png-5ab1bd5cde13f0.7986932615215977889096-1-300x300.png');
+    background-color: transparent;
+}
+
+
+#availability-filter {
+    border: 2px solid $white;
+    background-position: top 20px;
+    background-image: url('https://eaglestrategiecommerciali.it/wp-content/uploads/2020/05/kisspng-arrow-computer-icons-logo-white-down-arrow-png-5ab1bd5cde13f0.7986932615215977889096-1-300x300.png');
+    background-color: transparent;
+}

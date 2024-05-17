@@ -1,0 +1,40 @@
+#preview-section {
+    height: 250px;
+    width: 250px;
+
+    img {
+        height: 250px;
+        width: auto;
+    }
+}
+
+
+input {
+    backdrop-filter: blur(15px);
+}
+
+input::placeholder {
+    padding-left: 4px;
+    font-size: 14px;
+}
+
+select {
+    backdrop-filter: blur(15px);
+}
+
+option {
+    background-color: #00AFBB;
+}
+
+#add-ingredient-btn {
+    backdrop-filter: blur(15px);
+
+    &:hover {
+        border-radius: 20px;
+        background-color: rgba(235, 235, 235, 0.6);
+    }
+}
+
+.form-text.text-12 {
+    font-size: 12px;
+}

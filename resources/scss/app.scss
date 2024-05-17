@@ -1,0 +1,44 @@
+@import './reset';
+@import './_utilities';
+@import './_color';
+@import './components/form';
+@import './components/_button';
+@import './components/_upload';
+@import './components/_glasscard';
+@import './components/_glassmodal';
+@import './components/_dropdown';
+@import './components/_navbar';
+@import './components/_button';
+@import './views/home';
+@import './views/index';
+@import './views/show';
+@import './views/show-orders';
+
+
+@import '~bootstrap/scss/bootstrap';
+
+body {
+    min-height: 100vh;
+    visibility: visible;
+    font-family: "IBM Plex Mono", monospace;
+
+    background-image: linear-gradient(to left, #1e498b, #006fac, #0095bd, #00b8c0, #49daba);
+    background-size: cover;
+}
+
+html::-webkit-scrollbar {
+    width: 10px;
+}
+
+html::-webkit-scrollbar-track {
+    background: $white;
+}
+
+html::-webkit-scrollbar-thumb {
+    background: rgba(42, 41, 41, 0.383);
+
+}
+
+.asterisk {
+    font-size: 12px;
+}

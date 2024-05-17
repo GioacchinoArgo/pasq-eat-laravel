@@ -1,0 +1,12 @@
+input[type="file"] {
+    display: none;
+}
+
+#upload-label {
+    backdrop-filter: blur(15px);
+
+    &:hover {
+        border-radius: 20px;
+        background-color: rgba(235, 235, 235, 0.6);
+    }
+}

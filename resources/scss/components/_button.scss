@@ -1,0 +1,68 @@
+.btn-outline {
+    color: #000;
+    background-color: transparent;
+    text-decoration: none;
+    border: 2px solid $white_btn;
+    font-size: 16px;
+    backdrop-filter: blur(15px);
+    transition: background-color 0.3s ease;
+}
+
+.btn-outline-index {
+    color: $white_btn;
+    background-color: transparent;
+    text-decoration: none;
+    border: 2px solid $white;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-outline-delete {
+    color: #000;
+    background-color: $light_green;
+    border: 1px solid $white_btn;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+
+
+.blue {
+    &:hover {
+        color: #f8f9fa;
+        background-color: $blue;
+        border-color: $blue;
+    }
+}
+
+.red {
+    &:hover {
+        color: $white;
+        background-color: $red;
+        border-color: $red;
+    }
+}
+
+.yellow {
+    &:hover {
+        color: $white;
+        background-color: $yellow;
+        border-color: $yellow;
+    }
+}
+
+.green {
+    &:hover {
+        color: $white;
+        background-color: $green;
+        border-color: $green;
+    }
+}
+
+.gray {
+    &:hover {
+        color: $white;
+        background-color: $gray;
+        border-color: $gray;
+    }
+}
