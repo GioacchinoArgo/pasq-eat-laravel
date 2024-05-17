@@ -244,9 +244,16 @@ export default () => ({
     // Submit
     validateForm(e) {
 
+        // Giro su tutti i fields
         this.fields.forEach(field => {
+
+            // Prendiamo ogni oggetto e usiamo la funzione al suo interno
             this[field].validation();
+
+            // Se il fiel è 'password' allora usa anche la funzione confirmValidation(), funzione della conferma password
             if (field == 'password') this[field].confirmValidation();
+
+            // Se la flag (isValid) è a false allora fai il preventDefault()
             if (!this[field].isValid) e.preventDefault();
         })
 
