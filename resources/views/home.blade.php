@@ -8,6 +8,16 @@
         <div class="row">
             <div class="welcome col">
                 <h1>Benvenuti su PasqEat</h1>
+
+                {{-- Prova Alpine --}}
+                <div x-data="{ open: false }">
+                    <input @blur="open = !open">
+                 
+                    <span x-show="open">
+                        Content...
+                    </span>
+                </div>
+
                 <p class="w-75">Registrati, crea il tuo ristorante e personalizza il tuo menù.</p>
                 <a href="{{route('register')}}" class="btn border-light-subtle">Registrati</a>
             </div>
