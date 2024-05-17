@@ -31,8 +31,8 @@
                                             Nome ristorante
                                             <span class="text-danger"><strong><sup>*</sup></strong></span>
                                         </label>
-                                        <input @blur="restaurantNameValidation" x-model="restaurantName" placeholder="Nome del ristorante" id="restaurant_name" type="text" :class="restaurantNameError ? 'is-invalid' : '' && !restaurantNameError || isRestaruantNameValid ? 'is-valid' : '' " class="form-inputs form-control bg-transparent border-dark-light rounded-pill @error('restaurant_name') is-invalid @enderror" name="restaurant_name" value="{{old('restaurant_name')}}" required autocomplete="restaurant_name" autofocus>
-                                        <span x-text="restaurantNameMessage" class="invalid-message invalid-feedback ms-3"></span>
+                                        <input @blur="restaurant.validation()" x-model="restaurant.value" placeholder="Nome del ristorante" id="restaurant_name" type="text" :class="{ 'is-invalid': restaurant.error, 'is-valid': restaurant.isValid }" class="form-inputs form-control bg-transparent border-dark-light rounded-pill @error('restaurant_name') is-invalid @enderror" name="restaurant_name" value="{{old('restaurant_name')}}">
+                                        <span x-text="restaurant.message" class="invalid-message invalid-feedback ms-3"></span>
                                         @error('restaurant_name')
                                             <span class="invalid-feedback mx-3" role="alert">
                                                 <strong>{{ $message }}</strong> 
@@ -46,8 +46,8 @@
                                             Nome ristoratore
                                             <span class="text-danger"><strong><sup>*</sup></strong></span>
                                         </label>
-                                        <input @blur="nameValidation" x-model="name" placeholder="Nome del ristoratore" id="name" type="text" :class="nameError ? 'is-invalid' : '' && !nameError || isNameValid ? 'is-valid' : ''" class="form-inputs form-control bg-transparent border-dark-light rounded-pill @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" pattern="[A-Za-z]+" autofocus>
-                                        <span x-text="nameMessage" class="invalid-message invalid-feedback ms-3"></span>
+                                        <input @blur="name.validation()" x-model="name.value" placeholder="Nome del ristoratore" id="name" type="text" :class="{ 'is-invalid': name.error, 'is-valid': name.isValid }" class="form-inputs form-control bg-transparent border-dark-light rounded-pill @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}">
+                                        <span x-text="name.message" class="invalid-message invalid-feedback ms-3"></span>
                                         @error('name')
                                             <span class="invalid-feedback mx-3" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -61,10 +61,9 @@
                                             Cognome Ristoratore
                                             <span class="text-danger"><strong><sup>*</sup></strong></span>
                                         </label>
-                                        <input @blur="lastnameValidation" x-model="lastname" placeholder="Cognome ristoratore" id="lastname" type="text" :class="lastnameError ? 'is-invalid' : '' && !lastnameError || isLastnameValid ? 'is-valid' : ''" class="form-inputs form-control bg-transparent border-dark-light rounded-pill @error('lastname') is-invalid @enderror"
-                                        name="lastname" value="{{ old('lastname') }}" required autocomplete="lastname" autofocus>
-                                        <span x-text="lastnameMessage" class="invalid-message invalid-feedback ms-3"></span>
-        
+                                        <input @blur="lastname.validation()" x-model="lastname.value" placeholder="Cognome ristoratore" id="lastname" type="text" :class="{ 'is-invalid': lastname.error, 'is-valid': lastname.isValid }" class="form-inputs form-control bg-transparent border-dark-light rounded-pill @error('lastname') is-invalid @enderror"
+                                        name="lastname" value="{{ old('lastname') }}">
+                                        <span x-text="lastname.message" class="invalid-message invalid-feedback ms-3"></span>
                                         @error('lastname')
                                             <span class="invalid-feedback mx-3" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -78,10 +77,9 @@
                                             Email
                                             <span class="text-danger"><strong><sup>*</sup></strong></span>
                                         </label>
-                                        <input @blur="emailValidation" x-model="email" placeholder="es: name@example.com" id="email" type="email" :class="emailError ? 'is-invalid' : '' && !emailError || isEmailValid ? 'is-valid' : ''" class="form-inputs form-control bg-transparent border-dark-light rounded-pill 
-                                        @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email"
-                                        minlength="6">
-                                        <span x-text="emailMessage" class="invalid-message invalid-feedback ms-3"></span>
+                                        <input @blur="email.validation()" x-model="email.value" placeholder="es: name@example.com" id="email" type="email" :class="{ 'is-invalid': email.error, 'is-valid': email.isValid }" class="form-inputs form-control bg-transparent border-dark-light rounded-pill 
+                                        @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}">
+                                        <span x-text="email.message" class="invalid-message invalid-feedback ms-3"></span>
         
                                         @error('email')
                                             <span class="invalid-feedback mx-3" role="alert">
@@ -91,13 +89,14 @@
                                     </div>
     
                                     {{-- Password --}}
+                                    
                                     <div class="col-12 col-sm-6 col-md-6 col-lg-4 mb-4">
                                         <label for="password" class="mb-2 ms-3">
                                             {{ __('Password') }}
                                             <span class="text-danger"><strong><sup>*</sup></strong></span>
                                         </label>
-                                        <input @blur="passwordValidation" x-model="password" placeholder="Inserisci la password" id="password" type="password" :class="passwordError ? 'is-invalid' : '' && !passwordError || isPasswordValid ? 'is-valid' : ''" class="form-inputs form-control bg-transparent border-dark-light rounded-pill @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-                                        <span x-text="passwordMessage" class="invalid-message invalid-feedback ms-3"></span>
+                                        <input placeholder="Inserisci la password" id="password" type="password" class="form-inputs form-control bg-transparent border-dark-light rounded-pill @error('password') is-invalid @enderror" name="password">
+                                        <span class="invalid-message invalid-feedback ms-3"></span>
         
                                         @error('password')
                                             <span class="invalid-feedback mx-3" role="alert">
@@ -107,13 +106,14 @@
                                     </div>
     
                                     {{-- Conferma Password --}}
+                                    
                                     <div class="col-12 col-sm-6 col-md-6 col-lg-4 mb-4">
                                         <label for="password-confirm" class="mb-2 ms-3">
                                             Conferma Password
                                             <span class="text-danger"><strong><sup>*</sup></strong></span>
                                         </label>
-                                        <input @blur="passwordConfirmValidation" x-model="passwordConfirm" placeholder="Conferma la password" id="password-confirm" type="password" :class="passwordConfirmError ? 'is-invalid' : '' && !passwordConfirmError || isPasswordConfirmValid ? 'is-valid' : ''" class="form-inputs form-control bg-transparent border-dark-light rounded-pill" name="password_confirmation" required autocomplete="new-password">
-                                        <span x-text="passwordConfirmMessage" class="invalid-message invalid-feedback ms-3"></span>
+                                        <input placeholder="Conferma la password" id="password-confirm" type="password" class="form-inputs form-control bg-transparent border-dark-light rounded-pill" name="password_confirmation">
+                                        <span class="invalid-message invalid-feedback ms-3"></span>
                                         @error('address')   
                                             <div class="invalid-feedback mx-3">
                                                 <strong>{{$message}}</strong>
@@ -127,8 +127,8 @@
                                             Indirizzo
                                             <span class="text-danger"><strong><sup>*</sup></strong></span>
                                         </label>
-                                        <input @blur="addressValidation" x-model="address" placeholder="es: Via Pippo de Ciccios 7" name="address" value="{{old('address')}}" type="text" :class="addressError ? 'is-invalid' : '' && !addressError || isAddressValid ? 'is-valid' : ''" class="form-inputs form-control bg-transparent border-dark-light rounded-pill @error('address') is-invalid @elseif(old('address', '')) is-valid @enderror" id="address">
-                                        <span x-text="addressMessage" class="invalid-message invalid-feedback ms-3"></span>
+                                        <input @blur="address.validation()" x-model="address.value" placeholder="es: Via Pippo de Ciccios 7" name="address" value="{{old('address')}}" type="text" :class="{ 'is-invalid': address.error, 'is-valid': address.isValid }" class="form-inputs form-control bg-transparent border-dark-light rounded-pill @error('address') is-invalid @elseif(old('address', '')) is-valid @enderror" id="address">
+                                        <span x-text="address.message" class="invalid-message invalid-feedback ms-3"></span>
                                             @error('address')   
                                                 <div class="invalid-feedback mx-3">
                                                     <strong>{{$message}}</strong>
@@ -153,10 +153,8 @@
                                             P.IVA
                                             <span class="text-danger"><strong><sup>*</sup></strong></span>
                                         </label>
-                                        <input @blur="vatValidation" x-model="vat" placeholder="es: IT12345678901" name="vat" value="{{old('vat')}}" type="text" :class="vatError ? 'is-invalid' : '' && !vatError || isVatValid ? 'is-valid' : ''"
-                                        class="form-inputs form-control bg-transparent border-dark-light rounded-pill
-                                         @error('vat') is-invalid @elseif(old('vat', '')) is-valid @enderror" id="vat" minlength="11">
-                                         <span x-text="vatMessage" class="invalid-message invalid-feedback ms-3"></span>
+                                        <input @blur="vat.validation()" x-model="vat.value" placeholder="es: IT12345678901" name="vat" value="{{old('vat')}}" type="text" :class="{ 'is-invalid': vat.error, 'is-valid': vat.isValid }" class="form-inputs form-control bg-transparent border-dark-light rounded-pill @error('vat') is-invalid @elseif(old('vat', '')) is-valid @enderror" id="vat">
+                                         <span x-text="vat.message" class="invalid-message invalid-feedback ms-3"></span>
                                             @error('vat')   
                                                 <div class="invalid-feedback mx-3">
                                                     <strong>{{$message}}</strong>
