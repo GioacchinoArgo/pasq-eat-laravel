@@ -19,25 +19,84 @@
                         {{-- inserisco i data --}}
                         <div x-data=
                         "{ 
+                            isValid: false,
+                            regex: /\d/,
+
+                            {{-- Data del Nome del Ristorante --}}
                             restaurantName: '',
                             restaurantNameMessage: '',
                             restaurantNameError: false,
                             isRestaruantNameValid: false,
 
+                            {{-- Data del Nome dell'utente --}}
+                            name: '',
+                            nameMessage: '',
+                            nameError: false,
+                            isNameValid: false,
+
+                            {{-- Data del Cognome dell'utente --}}
+                            lastname: '',
+                            lastnameMessage: '',
+                            lastnameError: false,
+                            isLastnameValid: false,
+
+                            {{-- Validazione Nome del ristorante --}}
                             restaurantNameValidation() {
-                                this.isRestaruantNameValid = !this.restaurantNameValid;
+                                this.isRestaruantNameValid = true;
                                 if (!this.restaurantName) {
-                                    this.restaurantNameMessage = 'il campo è obbligatorio';
+                                    this.restaurantNameMessage = 'Il campo è obbligatorio';
+                                    this.restaurantNameError = true;
+                                } else if (this.restaurantName.length < 5 && this.restaurantName.length >= 1) {
+                                    this.restaurantNameMessage = 'Il nome del ristorante deve avere più di 5 caratteri';
+                                    this.restaurantNameError = true;
+                                } else if (!isNaN(this.restaurantName) && this.restaurantName.length >= 1) {
+                                    this.restaurantNameMessage = 'Il nome del ristorante non può avere solo numeri';
                                     this.restaurantNameError = true;
                                 } else {
                                     this.restaurantNameError = false;
-                                    
+                                    this.restaurantNameMessage = '';
+                                }
+                            },
+
+                            {{-- Validazione Nome dell'utente --}}
+                            nameValidation() {
+                                this.isNameValid = true;
+                                if (!this.name) {
+                                    this.nameMessage = 'Il campo è obbligatorio';
+                                    this.nameError = true;
+                                } else if (this.name.length < 2 && this.name.length >= 1) {
+                                    this.nameMessage = 'Il nome deve avere più di 2 caratteri';
+                                    this.nameError = true;
+                                } else if (this.regex.test(this.name) && this.name.length >= 1) {
+                                    this.nameMessage = 'Il nome non può contenere numeri';
+                                    this.nameError = true;
+                                } else {
+                                    this.nameError = false;
+                                    this.nameMessage = '';
+                                }
+                            },
+
+                            {{-- Validazione Cognome dell'utente --}}
+                            lastnameValidation() {
+                                this.isLastnameValid = true;
+                                if (!this.lastname) {
+                                    this.lastnameMessage = 'Il campo è obbligatorio';
+                                    this.lastnameError = true;
+                                } else if (this.lastname.length < 2 && this.lastname.length >= 1) {
+                                    this.lastnameMessage = 'Il cognome deve avere più di 2 caratteri';
+                                    this.lastnameError = true;
+                                } else if (this.regex.test(this.lastname) && this.lastname.length >= 1) {
+                                    this.lastnameMessage = 'Il cognome non può contenere numeri';
+                                    this.lastnameError = true;
+                                } else {
+                                    this.lastnameError = false;
+                                    this.lastnameMessage = '';
                                 }
                             }
                             
                         
                         }">
-                            <form method="POST" action="{{ route('register') }}" id="registration-form" novalidate>
+                            <form @submit.prevent="!isValid" method="POST" action="{{ route('register') }}" id="registration-form" novalidate>
                                 @csrf
                                 <h2 class="mb-5">Registrazione</h2>
                                 <div class="mb-4 row">
@@ -63,8 +122,8 @@
                                             Nome ristoratore
                                             <span class="text-danger"><strong><sup>*</sup></strong></span>
                                         </label>
-                                        <input placeholder="Nome del ristoratore" id="name" type="text" class="form-inputs form-control bg-transparent border-dark-light rounded-pill @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" pattern="[A-Za-z]+" autofocus>
-                                        <span class="invalid-message invalid-feedback ms-3"></span>
+                                        <input @blur="nameValidation" x-model="name" placeholder="Nome del ristoratore" id="name" type="text" :class="nameError ? 'is-invalid' : '' && !nameError || isNameValid ? 'is-valid' : ''" class="form-inputs form-control bg-transparent border-dark-light rounded-pill @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" pattern="[A-Za-z]+" autofocus>
+                                        <span x-text="nameMessage" class="invalid-message invalid-feedback ms-3"></span>
                                         @error('name')
                                             <span class="invalid-feedback mx-3" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -78,9 +137,9 @@
                                             Cognome Ristoratore
                                             <span class="text-danger"><strong><sup>*</sup></strong></span>
                                         </label>
-                                        <input placeholder="Cognome ristoratore" id="lastname" type="text" class="form-inputs form-control bg-transparent border-dark-light rounded-pill @error('lastname') is-invalid @enderror"
+                                        <input @blur="lastnameValidation" x-model="lastname" placeholder="Cognome ristoratore" id="lastname" type="text" :class="lastnameError ? 'is-invalid' : '' && !lastnameError || isLastnameValid ? 'is-valid' : ''" class="form-inputs form-control bg-transparent border-dark-light rounded-pill @error('lastname') is-invalid @enderror"
                                         name="lastname" value="{{ old('lastname') }}" required autocomplete="lastname" autofocus>
-                                        <span class="invalid-message invalid-feedback ms-3"></span>
+                                        <span x-text="lastnameMessage" class="invalid-message invalid-feedback ms-3"></span>
         
                                         @error('lastname')
                                             <span class="invalid-feedback mx-3" role="alert">
@@ -90,7 +149,6 @@
                                     </div>
     
                                     {{-- Email --}}
-                                    
                                     <div class="col-12 col-sm-6 col-md-6 col-lg-4 mb-4">
                                         <label for="email" class="mb-2 ms-3">
                                             Email
