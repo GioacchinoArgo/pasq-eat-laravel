@@ -169,6 +169,8 @@
                         </div>
 
                         <p class="asterisk mb-3 text-center me-3">I campi contrassegnati con <span class="text-danger"><strong><sup>*</sup></strong></span> sono obbligatori</p>
+
+                        {{-- Bottoni --}}
                         <div class="col-12 d-flex justify-content-between pt-2">
                             <a href="{{route('admin.dishes.index')}}" class="btn-outline-index text-white fw-semibold gray ms-1 px-3 py-2 rounded-pill d-flex align-items-center text-white fw-semibold"><i class="fa-solid fa-left-long me-2"></i> Torna indietro</a>
                             <div>
@@ -176,8 +178,11 @@
                                 <button class="btn-outline-index text-white fw-semibold yellow ms-1 px-3 py-2 rounded-pill align-items-center text-white fw-semibold text" type="reset"><i class="fa-solid fa-arrows-rotate me-2"></i>Svuota</button>
                             </div>
                         </div>
+
                     </div>
+
                 </form>
+
             </div>
     </div>
             
@@ -228,6 +233,8 @@
 // Recupero i valori delle select
 const dietOptions = @json($diet_options);
 const courseOptions = @json($course_options);
+
+// Recupero il singolo piatto
 const dish = @json($dish);
 
 </script>
