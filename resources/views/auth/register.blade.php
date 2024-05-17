@@ -20,7 +20,7 @@
                         <div x-data="alpine_validation">
 
                             {{-- Form --}}
-                            <form @submit.prevent="!isValid" method="POST" action="{{ route('register') }}" id="registration-form" novalidate>
+                            <form @submit="isPasquinoniValid" method="POST" action="{{ route('register') }}" id="registration-form" novalidate>
                                 @csrf
                                 <h2 class="mb-5">Registrazione</h2>
                                 <div class="mb-4 row">
@@ -80,7 +80,6 @@
                                         <input @blur="email.validation()" x-model="email.value" placeholder="es: name@example.com" id="email" type="email" :class="{ 'is-invalid': email.error, 'is-valid': email.isValid }" class="form-inputs form-control bg-transparent border-dark-light rounded-pill 
                                         @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}">
                                         <span x-text="email.message" class="invalid-message invalid-feedback ms-3"></span>
-        
                                         @error('email')
                                             <span class="invalid-feedback mx-3" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -89,7 +88,6 @@
                                     </div>
     
                                     {{-- Password --}}
-                                    
                                     <div class="col-12 col-sm-6 col-md-6 col-lg-4 mb-4">
                                         <label for="password" class="mb-2 ms-3">
                                             {{ __('Password') }}
@@ -97,7 +95,6 @@
                                         </label>
                                         <input @blur="password.validation()" x-model="password.value" placeholder="Inserisci la password" id="password" type="password" :class="{ 'is-invalid': password.error, 'is-valid': password.isValid }" class="form-inputs form-control bg-transparent border-dark-light rounded-pill @error('password') is-invalid @enderror" name="password">
                                         <span x-text="password.message" class="invalid-message invalid-feedback ms-3"></span>
-        
                                         @error('password')
                                             <span class="invalid-feedback mx-3" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -106,7 +103,6 @@
                                     </div>
     
                                     {{-- Conferma Password --}}
-                                    
                                     <div class="col-12 col-sm-6 col-md-6 col-lg-4 mb-4">
                                         <label for="password-confirm" class="mb-2 ms-3">
                                             Conferma Password
@@ -162,6 +158,7 @@
                                             @enderror
                                     </div>
     
+                                    {{-- Categorie --}}
                                     <div class="col-12 text-center">
                                         <p class="mb-3 text-center">Categorie<span class="text-danger ms-2"><strong><sup>*</sup></strong></span> </p>
                                         {{-- Foreach delle categorie --}}
@@ -173,6 +170,7 @@
                                         @endforeach
                                         <div id="text-checkbox" class="text-danger d-none mt-4"></div>
                                     </div>
+
                                 </div>
                                 <p class="asterisk mb-3 text-center me-3">I campi contrassegnati con <span class="text-danger"><strong><sup>*</sup></strong></span> sono obbligatori</p>
                             
