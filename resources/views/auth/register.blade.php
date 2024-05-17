@@ -95,8 +95,8 @@
                                             {{ __('Password') }}
                                             <span class="text-danger"><strong><sup>*</sup></strong></span>
                                         </label>
-                                        <input placeholder="Inserisci la password" id="password" type="password" class="form-inputs form-control bg-transparent border-dark-light rounded-pill @error('password') is-invalid @enderror" name="password">
-                                        <span class="invalid-message invalid-feedback ms-3"></span>
+                                        <input @blur="password.validation()" x-model="password.value" placeholder="Inserisci la password" id="password" type="password" :class="{ 'is-invalid': password.error, 'is-valid': password.isValid }" class="form-inputs form-control bg-transparent border-dark-light rounded-pill @error('password') is-invalid @enderror" name="password">
+                                        <span x-text="password.message" class="invalid-message invalid-feedback ms-3"></span>
         
                                         @error('password')
                                             <span class="invalid-feedback mx-3" role="alert">
@@ -112,8 +112,8 @@
                                             Conferma Password
                                             <span class="text-danger"><strong><sup>*</sup></strong></span>
                                         </label>
-                                        <input placeholder="Conferma la password" id="password-confirm" type="password" class="form-inputs form-control bg-transparent border-dark-light rounded-pill" name="password_confirmation">
-                                        <span class="invalid-message invalid-feedback ms-3"></span>
+                                        <input @blur="password.confirmValidation()" x-model="password.valueConfirm" placeholder="Conferma la password" id="password-confirm" type="password" :class="{ 'is-invalid': password.errorConfirm, 'is-valid': password.isValidConfirm }" class="form-inputs form-control bg-transparent border-dark-light rounded-pill" name="password_confirmation">
+                                        <span x-text="password.messageConfirm" class="invalid-message invalid-feedback ms-3"></span>
                                         @error('address')   
                                             <div class="invalid-feedback mx-3">
                                                 <strong>{{$message}}</strong>

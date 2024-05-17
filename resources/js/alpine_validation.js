@@ -50,6 +50,7 @@ export default () => ({
             }
         }
     },
+
     // Data del Cognome dell'utente
     lastname: {
         value: '',
@@ -147,44 +148,40 @@ export default () => ({
     },
 
     // Data della password
-    password: '',
-    passwordMessage: '',
-    passwordError: false,
-    isPasswordValid: false,
-
-    // Data della Conferma Password
-    passwordConfirm: '',
-    passwordConfirmMessage: '',
-    passwordConfirmError: false,
-    isPasswordConfirmValid: false,
-
-    // Validazione Password
-    passwordValidation() {
-        this.isPasswordValid = true;
-        if (!this.password.length) {
-            this.passwordMessage = 'Il campo è obbligatorio';
-            this.passwordError = true;
-        } else if (this.password.length < 8 && this.password.length >= 1) {
-            this.passwordMessage = 'La password deve contenere almeno 8 caratteri';
-            this.passwordError = true;
-        } else {
-            this.passwordMessage = '';
-            this.passwordError = false;
-        }
+    password: {
+        value: '',
+        valueConfirm: '',
+        message: '',
+        messageConfirm: '',
+        error: false,
+        errorConfirm: false,
+        isValid: false,
+        isValidConfirm: false,
+        validation() {
+            if (!this.value.length) {
+                this.message = 'Il campo è obbligatorio';
+                this.error = true;
+            } else if (this.value.length < 8 && this.value.length >= 1) {
+                this.message = 'La password deve contenere almeno 8 caratteri';
+                this.error = true;
+            } else {
+                this.message = '';
+                this.error = false;
+                this.isValid = true;
+            }
+        },
+        confirmValidation() {
+            if (!this.valueConfirm.length) {
+                this.messageConfirm = 'Il campo è obbligatorio';
+                this.errorConfirm = true;
+            } else if (this.value !== this.valueConfirm) {
+                this.messageConfirm = 'Le password non coincidono';
+                this.errorConfirm = true;
+            } else {
+                this.messageConfirm = '';
+                this.errorConfirm = false;
+                this.isValidConfirm = true;
+            }
+        },
     },
-
-    // Validazione Conferma Password
-    passwordConfirmValidation() {
-        this.isPasswordConfirmValid = true;
-        if (!this.passwordConfirm.length) {
-            this.passwordConfirmMessage = 'Il campo è obbligatorio';
-            this.passwordConfirmError = true;
-        } else if (this.password !== this.passwordConfirm) {
-            this.passwordConfirmMessage = 'Le password non coincidono';
-            this.passwordConfirmError = true;
-        } else {
-            this.passwordConfirmMessage = '';
-            this.passwordConfirmError = false;
-        }
-    }
 })
