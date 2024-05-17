@@ -91,14 +91,13 @@
                                     </div>
     
                                     {{-- Password --}}
-                                    
                                     <div class="col-12 col-sm-6 col-md-6 col-lg-4 mb-4">
                                         <label for="password" class="mb-2 ms-3">
                                             {{ __('Password') }}
                                             <span class="text-danger"><strong><sup>*</sup></strong></span>
                                         </label>
-                                        <input placeholder="Inserisci la password" id="password" type="password" class="form-inputs form-control bg-transparent border-dark-light rounded-pill @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-                                        <span class="invalid-message invalid-feedback ms-3"></span>
+                                        <input @blur="passwordValidation" x-model="password" placeholder="Inserisci la password" id="password" type="password" :class="passwordError ? 'is-invalid' : '' && !passwordError || isPasswordValid ? 'is-valid' : ''" class="form-inputs form-control bg-transparent border-dark-light rounded-pill @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                        <span x-text="passwordMessage" class="invalid-message invalid-feedback ms-3"></span>
         
                                         @error('password')
                                             <span class="invalid-feedback mx-3" role="alert">
@@ -108,14 +107,13 @@
                                     </div>
     
                                     {{-- Conferma Password --}}
-                                    
                                     <div class="col-12 col-sm-6 col-md-6 col-lg-4 mb-4">
                                         <label for="password-confirm" class="mb-2 ms-3">
                                             Conferma Password
                                             <span class="text-danger"><strong><sup>*</sup></strong></span>
                                         </label>
-                                        <input placeholder="Conferma la password" id="password-confirm" type="password" class="form-inputs form-control bg-transparent border-dark-light rounded-pill" name="password_confirmation" required autocomplete="new-password">
-                                        <span class="invalid-message invalid-feedback ms-3"></span>
+                                        <input @blur="passwordConfirmValidation" x-model="passwordConfirm" placeholder="Conferma la password" id="password-confirm" type="password" :class="passwordConfirmError ? 'is-invalid' : '' && !passwordConfirmError || isPasswordConfirmValid ? 'is-valid' : ''" class="form-inputs form-control bg-transparent border-dark-light rounded-pill" name="password_confirmation" required autocomplete="new-password">
+                                        <span x-text="passwordConfirmMessage" class="invalid-message invalid-feedback ms-3"></span>
                                         @error('address')   
                                             <div class="invalid-feedback mx-3">
                                                 <strong>{{$message}}</strong>
@@ -129,8 +127,8 @@
                                             Indirizzo
                                             <span class="text-danger"><strong><sup>*</sup></strong></span>
                                         </label>
-                                        <input placeholder="es: Via Pippo de Ciccios 7" name="address" value="{{old('address')}}" type="text" class="form-inputs form-control bg-transparent border-dark-light rounded-pill @error('address') is-invalid @elseif(old('address', '')) is-valid @enderror" id="address">
-                                        <span class="invalid-message invalid-feedback ms-3"></span>
+                                        <input @blur="addressValidation" x-model="address" placeholder="es: Via Pippo de Ciccios 7" name="address" value="{{old('address')}}" type="text" :class="addressError ? 'is-invalid' : '' && !addressError || isAddressValid ? 'is-valid' : ''" class="form-inputs form-control bg-transparent border-dark-light rounded-pill @error('address') is-invalid @elseif(old('address', '')) is-valid @enderror" id="address">
+                                        <span x-text="addressMessage" class="invalid-message invalid-feedback ms-3"></span>
                                             @error('address')   
                                                 <div class="invalid-feedback mx-3">
                                                     <strong>{{$message}}</strong>
@@ -155,10 +153,10 @@
                                             P.IVA
                                             <span class="text-danger"><strong><sup>*</sup></strong></span>
                                         </label>
-                                        <input placeholder="es: IT12345678901" name="vat" value="{{old('vat')}}" type="text"
+                                        <input @blur="vatValidation" x-model="vat" placeholder="es: IT12345678901" name="vat" value="{{old('vat')}}" type="text" :class="vatError ? 'is-invalid' : '' && !vatError || isVatValid ? 'is-valid' : ''"
                                         class="form-inputs form-control bg-transparent border-dark-light rounded-pill
                                          @error('vat') is-invalid @elseif(old('vat', '')) is-valid @enderror" id="vat" minlength="11">
-                                         <span class="invalid-message invalid-feedback ms-3"></span>
+                                         <span x-text="vatMessage" class="invalid-message invalid-feedback ms-3"></span>
                                             @error('vat')   
                                                 <div class="invalid-feedback mx-3">
                                                     <strong>{{$message}}</strong>
