@@ -1,5 +1,9 @@
 export default () => ({
 
+    // Data dei checkbox
+    checkboxes: [],
+    checkboxMessage: '',
+
     // Data del Nome del Ristorante
     restaurant: {
         value: '',
@@ -104,6 +108,22 @@ export default () => ({
                 this.message = '';
                 this.isValid = true;
             }
+
+            // Giro su tutte le email prese dal DB
+            emails.forEach(({ email }) => {
+
+                // Se l'email nel database è uguale all'email inserita
+                if (email === this.value) {
+
+                    // Riassegno la flag a false
+                    this.isValid = false;
+
+                    this.error = true;
+
+                    // Costruisco il messaggio di errore e lo aggiungo all'invalid message
+                    this.message = 'Questa email è già stata utilizzata';
+                }
+            })
         },
     },
 
@@ -201,12 +221,29 @@ export default () => ({
                 this.error = false;
                 this.isValid = true;
             }
+
+            // Giro su tuttle le P.IVA prese dal DB
+            vats.forEach(({ vat }) => {
+
+                // Se la P.IVA nel database è uguale alla P.IVA inserita
+                if (vat === this.value) {
+
+                    // Riassegno la flag a false
+                    this.isValid = false;
+
+                    this.error = true;
+
+                    // Costruisco il messaggio di errore e lo aggiungo all'invalid message
+                    this.message = 'P.IVA già esistente';
+                }
+            })
         }
     },
 
     // Submit
-    isPasquinoniValid(e) {
+    validateForm(e) {
 
+        // Faccio i controlli anche al submit
         this.restaurant.validation();
         this.name.validation();
         this.lastname.validation();
@@ -216,8 +253,17 @@ export default () => ({
         this.password.confirmValidation();
         this.vat.validation();
 
+        // Controllo che almeno un checkbox sia stato aggiunto
+        if (this.checkboxes.length < 1) {
+            e.preventDefault();
+            this.checkboxMessage = 'Aggiungi almeno un categoria';
+        } else {
+            this.checkboxMessage = '';
+        }
+
+        // Controllo se la flag isValid è a true
         if (!this.restaurant.isValid || !this.name.isValid || !this.lastname.isValid || !this.email.isValid || !this.address.isValid || !this.password.isValid || !this.password.isValidConfirm || !this.vat.isValid) {
-            e.preventDefault()
+            e.preventDefault();
         }
     }
 })

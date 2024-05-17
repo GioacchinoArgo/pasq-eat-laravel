@@ -20,7 +20,7 @@
                         <div x-data="alpine_validation">
 
                             {{-- Form --}}
-                            <form @submit="isPasquinoniValid" method="POST" action="{{ route('register') }}" id="registration-form" novalidate>
+                            <form @submit="validateForm" method="POST" action="{{ route('register') }}" id="registration-form" novalidate>
                                 @csrf
                                 <h2 class="mb-5">Registrazione</h2>
                                 <div class="mb-4 row">
@@ -165,10 +165,10 @@
                                         @foreach ($categories as $category)
                                             <div class="form-check form-check-inline me-2">
                                                 <label class="form-check-label" for="category-{{$category->id}}">{{$category->label}}</label>
-                                                <input class="form-check-input" type="checkbox" id="category-{{$category->id}}" value="{{$category->id}}" name="categories[]" @if (in_array($category->id, old('categories', $prev_categories ?? []))) checked @endif>
+                                                <input x-model="checkboxes" class="form-check-input" type="checkbox" id="category-{{$category->id}}" value="{{$category->id}}" name="categories[]" @if (in_array($category->id, old('categories', $prev_categories ?? []))) checked @endif>
                                             </div>
                                         @endforeach
-                                        <div id="text-checkbox" class="text-danger d-none mt-4"></div>
+                                        <div x-text="checkboxMessage" x-show="checkboxMessage" class="text-danger mt-4"></div>
                                     </div>
 
                                 </div>
@@ -199,11 +199,9 @@
 </div>
 @endsection
 
-{{-- @section('scripts')
+@section('scripts')
     <script>
         const vats = @json($vats);
         const emails = @json($emails);
     </script>
-
-    @vite('resources/js/validation_register_form.js')
-@endsection --}}
+@endsection
