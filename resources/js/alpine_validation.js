@@ -3,6 +3,7 @@ export default () => ({
     // Data dei checkbox
     checkboxes: [],
     checkboxMessage: '',
+    fields: ['restaurant', 'name', 'lastname', 'email', 'address', 'password', 'vat'],
 
     // Data del Nome del Ristorante
     restaurant: {
@@ -243,15 +244,10 @@ export default () => ({
     // Submit
     validateForm(e) {
 
-        // Faccio i controlli anche al submit
-        this.restaurant.validation();
-        this.name.validation();
-        this.lastname.validation();
-        this.email.validation();
-        this.address.validation();
-        this.password.validation();
-        this.password.confirmValidation();
-        this.vat.validation();
+        this.fields.forEach(field => {
+            this[field].validation();
+            if (!this[field].isValid) e.preventDefault();
+        })
 
         // Controllo che almeno un checkbox sia stato aggiunto
         if (this.checkboxes.length < 1) {
@@ -259,11 +255,6 @@ export default () => ({
             this.checkboxMessage = 'Aggiungi almeno un categoria';
         } else {
             this.checkboxMessage = '';
-        }
-
-        // Controllo se la flag isValid è a true
-        if (!this.restaurant.isValid || !this.name.isValid || !this.lastname.isValid || !this.email.isValid || !this.address.isValid || !this.password.isValid || !this.password.isValidConfirm || !this.vat.isValid) {
-            e.preventDefault();
         }
     }
 })
