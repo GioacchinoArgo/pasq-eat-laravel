@@ -1,7 +1,7 @@
 export default () => ({
 
     // Input da validare
-    fields: ['name', 'price', 'course'],
+    fields: ['name', 'price', 'course', 'diet'],
 
     // Data del Nome del piatto
     name: {
@@ -66,6 +66,25 @@ export default () => ({
         isValid: false,
         validation() {
             if (!this.value) {
+                this.error = true;
+                this.isValid = false;
+            } else if (!courseOptions.includes(this.value)) {
+                this.error = true;
+                this.isValid = false;
+            } else {
+                this.error = false;
+                this.isValid = true;
+            }
+        }
+    },
+
+    // Data della select diet
+    diet: {
+        value: dish.diet ? dish.diet : '',
+        error: false,
+        isValid: false,
+        validation() {
+            if (!dietOptions.includes(this.value)) {
                 this.error = true;
                 this.isValid = false;
             } else {
