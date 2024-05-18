@@ -84,7 +84,7 @@ export default () => ({
         error: false,
         isValid: false,
         validation() {
-            if (!dietOptions.includes(this.value)) {
+            if (!dietOptions.includes(this.value) && this.value !== '') {
                 this.error = true;
                 this.isValid = false;
             } else {
