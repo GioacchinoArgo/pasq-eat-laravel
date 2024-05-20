@@ -82,12 +82,7 @@
                                         {{ $option }}
                                     </option>
                                 @endforeach
-                            </select>
-                            @error('diet')
-                                <div class="invalid-feedback ms-3">
-                                    {{ $message }}
-                                </div>        
-                            @enderror       
+                            </select>     
                         </div>
         
                         {{-- SELECT COURSE --}}
@@ -105,12 +100,7 @@
                                     <option value="{{ $option }}" {{ old('course', $dish->course) === $option ? 'selected' : '' }}>{{ $option }}</option>
                                 @endforeach
 
-                            </select>
-                            @error('course')
-                                <div class="invalid-feedback ms-3">
-                                    {{ $message }}<a href="{{route('admin.dishes.index')}}" class="btn btn-secondary"><i class="fa-solid fa-arrow-left me-2"></i>Torna indietro</a>
-                                </div> 
-                            @enderror       
+                            </select>      
                         </div>
 
                         {{-- INPUT GROUP INGREDIENTS --}}
