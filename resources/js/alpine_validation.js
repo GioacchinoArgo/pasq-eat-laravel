@@ -3,6 +3,8 @@ export default () => ({
     // Data dei checkbox
     checkboxes: [],
     checkboxMessage: '',
+
+    // Input da validare
     fields: ['restaurant', 'name', 'lastname', 'email', 'address', 'password', 'vat'],
 
     // Data del Nome del Ristorante
