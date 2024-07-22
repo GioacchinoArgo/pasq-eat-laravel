@@ -68,9 +68,6 @@ export default () => ({
             if (!this.value) {
                 this.error = true;
                 this.isValid = false;
-            } else if (!courseOptions.includes(this.value)) {
-                this.error = true;
-                this.isValid = false;
             } else {
                 this.error = false;
                 this.isValid = true;
@@ -106,6 +103,22 @@ export default () => ({
             // Se la flag (isValid) è a false allora fai il preventDefault()
             if (!this[field].isValid) e.preventDefault();
         });
+
+        if (!courseOptions.includes(course.value)) {
+
+            this.course.error = true;
+            this.course.isValid = false;
+
+            e.preventDefault();
+        }
+
+        if (!dietOptions.includes(diet.value)) {
+
+            this.diet.error = true;
+            this.diet.isValid = false;
+
+            e.preventDefault();
+        }
 
     }
 })
