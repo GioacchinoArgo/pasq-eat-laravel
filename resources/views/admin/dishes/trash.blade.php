@@ -5,11 +5,11 @@
 @section('content')
 <section id='dishes-trash' class="spacing">
     <div class="mb-2 d-flex justify-content-between align-items-center">
-      <a href="{{route('admin.dishes.index')}}" class="btn-outline-index fw-semibold gray text-white ms-1 px-3 py-1 py-md-2 rounded-pill">
+      <a href="{{route('admin.dishes.index')}}" class="btn-outline-index fw-semibold gray ms-1 px-3 py-1 py-md-2 rounded-pill">
         <i class="fa-solid fa-arrow-left"></i>
         <span class="d-none d-md-inline-block">Torna indietro</span>
       </a>
-      <h1 class="text-white text-center mb-0">Piatti Eliminati</h1>
+      <h1 class="text-center mb-0">Piatti Eliminati</h1>
     </div>
     {{--Tabella--}}
     <div class="tbl-header">
@@ -46,7 +46,7 @@
             <td class="text-center">{{$dish->name}}</td>
             {{--Disponibilità--}}
             <td class="text-center">
-              @if ($dish->availability == 1)
+              @if ($dish->availability)
                 <span class="stamp is-available"></span> 
               @else
                 <span class="stamp not-available"></span>
