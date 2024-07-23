@@ -27,18 +27,22 @@
                     <div class="row align-items-center">
 
                         {{-- INPUT AVAILABILITY --}}
-                        <div class="col-12 mb-3">
-                            <div class="form-check form-switch d-flex p-0">
-                                <label class="form-check-label mb-2 ms-3" for="availability">Status articolo</label>
-                                <div class="ms-5">
-                                    <label class="form-check-label" id="availability-label" for="availability"></label>
-                                    <input class="form-check-input" type="checkbox" role="switch" id="availability" 
-                                    name="availability"
-                                    @if(old('availability', $dish->availability) == 1) checked @endif
-                                    >
-                                </div>
-                            </div> 
-                        </div>
+                        @if (!$dish->deleted_at)
+                            
+                            <div class="col-12 mb-3">
+                                <div class="form-check form-switch d-flex p-0">
+                                    <label class="form-check-label mb-2 ms-3" for="availability">Status articolo</label>
+                                    <div class="ms-5">
+                                        <label class="form-check-label" id="availability-label" for="availability"></label>
+                                        <input class="form-check-input" type="checkbox" role="switch" id="availability" 
+                                        name="availability"
+                                        @if(old('availability', $dish->availability) == 1) checked @endif
+                                        >
+                                    </div>
+                                </div> 
+                            </div>
+
+                        @endif
         
                         {{-- INPUT NOME DEL PIATTO --}}
                         <div class="col-12 mb-3">
@@ -184,16 +188,19 @@
 <script>
 
     // Label di availability dinamico
-    document.getElementById('availability').addEventListener('change', function() {;
-        const label = document.getElementById('availability-label');
-        const input = document.getElementById('availability');
-        
-        if (input.checked) {
-            label.textContent = 'disponibile';
-        } else {
-            label.textContent = 'non disponibile';
-        }
-    });
+    const availability = document.getElementById('availability')
+    if (availability) {
+        availability.addEventListener('change', function() {
+            const label = document.getElementById('availability-label');
+            const input = document.getElementById('availability');
+            
+            if (input.checked) {
+                label.textContent = 'disponibile';
+            } else {
+                label.textContent = 'non disponibile';
+            }
+        });
+    }
 
     // setto la visualizzazione dinamica dell'immagine in pagina
     const imageField = document.getElementById('uploadBtn');
