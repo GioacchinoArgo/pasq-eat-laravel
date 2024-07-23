@@ -5,7 +5,7 @@
                 href="
                     @guest ()
                     
-                        {{ url('/') }}
+                        {{ url('/register') }}
                     @elseif (Auth::user())
     
                         {{route('dashboard')}}
@@ -27,12 +27,7 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav d-inline-block d-md-flex me-md-auto gap-2">
     
-                    {{-- Se l'utente non è loggato vede la Home --}}
-                    @guest()
-                    <li class="nav-item">
-                        <a class="nav-link on-hover ms-1 ps-2 pe-2 p-sm-2 p-md-2" href="{{url('/') }}">{{ __('Home') }}</a>
-                    </li>
-                    @endguest
+                    
     
                     @guest()
     
@@ -52,13 +47,22 @@
                 </ul>
     
                 <!-- Right Side Of Navbar -->
-                <ul class="glass-dropdown list-unstyled d-flex gap-3 mb-0">
+                <ul class="glass-dropdown list-unstyled d-sm-flex gap-3 mb-0">
                     <!-- Authentication Links -->
                     @guest
-                    <li class="nav-item">
+
+                    {{-- Login --}}
+                    <li class="nav-item my-3 my-md-0 text-center">
                         <a class="nav-link on-hover p-sm-2 p-md-2" href="{{ route('login') }}">{{ __('Login') }}</a>
                     </li>
+
+                    {{-- Registrati --}}
+                    <li class="nav-item my-3 my-md-0">
+                        <a class="nav-link on-hover ms-1 ps-2 pe-2 p-sm-2 p-md-2" href="{{url('/register') }}">{{ __('Registrati') }}</a>
+                    </li>
+
                     @else
+
                     <li class="active">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle on-hover px-2 py-2 px-sm-2 py-sm-2" href="#" role="button" tabindex="0">
                             {{ Auth::user()->name }}
