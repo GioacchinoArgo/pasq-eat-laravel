@@ -112,7 +112,7 @@ export default () => ({
             e.preventDefault();
         }
 
-        if (!dietOptions.includes(diet.value)) {
+        if (!dietOptions.includes(diet.value) && diet.value !== '') {
 
             this.diet.error = true;
             this.diet.isValid = false;
