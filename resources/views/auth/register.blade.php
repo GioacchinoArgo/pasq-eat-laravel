@@ -22,7 +22,7 @@
                             {{-- Form --}}
                             <form @submit="validateForm" method="POST" action="{{ route('register') }}" id="registration-form" novalidate>
                                 @csrf
-                                <h2 class="mb-5">Registrazione</h2>
+                                <h1 class="mb-5 text-center">Registrazione</h1>
                                 <div class="mb-4 row">
     
                                     {{-- Nome del ristorante--}}
