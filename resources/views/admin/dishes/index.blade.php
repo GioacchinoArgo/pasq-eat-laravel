@@ -10,7 +10,7 @@
     <form class="filter-courses d-flex align-items-center justify-content-center" action="{{ route('admin.dishes.index') }}" method="GET">
       <div class="input-group d-flex flex-column flex-lg-row gap-2">
         <div class="col-12 col-sm-12 col-md-12 col-lg-5 mb-1">
-          <select role="button" id="coruse-filter" class="form-select text-white fw-bold bg-transparent rounded-pill" name="course">
+          <select role="button" id="coruse-filter" class="form-select fw-bold bg-transparent rounded-pill" name="course">
             <option class="fw-semibold" value="">Tutte le portate</option>
             @foreach ($courses as $course)
             <option class="fw-semibold" value="{{ $course }}"  {{ request('course') == $course ? 'selected' : '' }}>
@@ -21,27 +21,27 @@
         </div>
         <div class="col-12 flex-lg-row col-sm-12 col-md-12 col-lg-4 gap-2">
           <!--Filtro in base a disponibilità del piatto-->
-          <select id="availability-filter" role="button" class="form-select pe-5 text-white fw-bold bg-transparent rounded-pill" name="availability"> 
+          <select id="availability-filter" role="button" class="form-select pe-5 fw-bold bg-transparent rounded-pill" name="availability"> 
             <option value="">Tutti</option>
             <option value="available" @if($availability==='available')selected @endif>Disponibile</option>
             <option value="not-available" @if($availability==='not-available')selected @endif>Non Disponibile</option>
           </select>
         </div>
         <div class="col-2 text-center">
-          <button class="btn-outline-index text-white my-1 fw-semibold rounded-pill px-2 py-1 gray" type="submit">Filtra</button>
+          <button class="btn-outline-index my-1 fw-semibold rounded-pill px-2 py-1 gray" type="submit">Filtra</button>
         </div>
       </div>
     </form>
     
-    <h1 class="text-white me-4">Menu</h1>
+    <h1 class="me-4">Menu</h1>
     <div class="d-flex justify-content-end gap-2 p-2">
       <!-- Cestino -->
-      <a href="{{route('admin.dishes.trash')}}" class="btn-outline-index red text-white fw-semibold ms-1 px-3 py-1 rounded-pill">
+      <a href="{{route('admin.dishes.trash')}}" class="btn-outline-index red fw-semibold ms-1 px-3 py-1 rounded-pill">
           <i class="far fa-trash-can"></i>
           <span class="d-none d-xl-inline">Vedi Cestino</span>
       </a>
       <!-- Crea nuovo dish -->
-      <a href="{{route('admin.dishes.create')}}" class="btn-outline-index text-white fw-semibold green ms-1 px-3 py-1 rounded-pill">
+      <a href="{{route('admin.dishes.create')}}" class="btn-outline-index fw-semibold green ms-1 px-3 py-1 rounded-pill">
         <i class="fa-solid fa-plus"></i>
         <span class="d-none d-xl-inline">Aggiungi piatto</span>
       </a>
@@ -106,12 +106,12 @@
             <td>
               <div class="d-flex gap-2 flex-column flex-xl-row align-items-center justify-content-end">
                 {{--# COLLEGAMENTO A SHOW --}}
-                <a href="{{ route('admin.dishes.show', $dish->id)}}" class="rounded px-2 py-1 btn-outline-index blue text-white fw-semibold">
+                <a href="{{ route('admin.dishes.show', $dish->id)}}" class="rounded px-2 py-1 btn-outline-index blue fw-semibold">
                   <i class="far fa-eye"></i>
                 </a>
                 
                 {{--# COLLEGAMENTO A  EDIT --}}
-                <a href="{{ route('admin.dishes.edit', $dish->id)}}" class="rounded px-2 py-1 btn-outline-index yellow text-white fw-semibold">
+                <a href="{{ route('admin.dishes.edit', $dish->id)}}" class="rounded px-2 py-1 btn-outline-index yellow fw-semibold">
                   <i class="fas fa-pencil"></i>
                 </a>
                 
@@ -120,13 +120,13 @@
                   method="POST" class="delete-form" data-dish="{{$dish->id}}" data-bs-toggle="modal" data-bs-target="#modal">
                   @csrf
                   @method('DELETE')
-                  <button class="rounded px-2 py-1 btn-outline-index red text-white fw-semibold"><i class="far fa-trash-can"></i></button>
+                  <button class="rounded px-2 py-1 btn-outline-index red fw-semibold"><i class="far fa-trash-can"></i></button>
                 </form>
               </div>
             </td>
           </tr>
         @empty
-          <h1 class="py-5 text-white">Non ci sono piatti da mostrare</h1>
+          <h1 class="py-5">Non ci sono piatti da mostrare</h1>
         @endforelse
       </tbody>
     </table>
