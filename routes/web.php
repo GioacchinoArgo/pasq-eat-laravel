@@ -21,9 +21,7 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
-    if (Auth::user()) return redirect()->route('admin.restaurants.show', Auth::user()->restaurant->id);
-
-    return view('home');
+    return redirect()->route('register');
 });
 
 Route::prefix('/admin')->middleware(['auth'])->name('admin.')->group(function () {
