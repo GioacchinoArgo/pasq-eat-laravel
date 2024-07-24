@@ -52,13 +52,13 @@
                     @guest
 
                     {{-- Login --}}
-                    <li class="nav-item my-3 my-md-0 text-center">
-                        <a class="nav-link on-hover p-sm-2 p-md-2" href="{{ route('login') }}">{{ __('Login') }}</a>
+                    <li class="nav-item my-4 my-md-0 text-center">
+                        <a class="data-btn orange p-2 p-sm-2 p-md-2" href="{{ route('login') }}">{{ __('Login') }}</a>
                     </li>
 
                     {{-- Registrati --}}
                     <li class="nav-item my-3 my-md-0">
-                        <a class="nav-link on-hover ms-1 ps-2 pe-2 p-sm-2 p-md-2" href="{{url('/register') }}">{{ __('Registrati') }}</a>
+                        <a class="data-btn orange p-2 ms-1 ps-2 pe-2 p-sm-2 p-md-2" href="{{url('/register') }}">{{ __('Registrati') }}</a>
                     </li>
 
                     @else

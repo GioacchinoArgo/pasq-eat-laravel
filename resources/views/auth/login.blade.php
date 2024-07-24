@@ -7,7 +7,7 @@
     <div class="glass-card spacing px-4 py-4">
         <div class="row">
             <div class="col">
-                <h1 class="text-center pb-4">{{ __('Login') }}</h1>
+                <h1 class="text-center pb-4">{{ __('Accedi') }}</h1>
                 <form novalidate method="POST" action="{{ route('login') }}">
                     @csrf
                     <div class="mb-4 row">
@@ -51,8 +51,8 @@
 
                     <div class="mb-4 row">
                         <div class="col-12 d-flex align-items-center justify-content-center">
-                            <button type="submit" class="btn btn-primary">
-                                {{ __('Login') }}
+                            <button type="submit" class="data-btn green">
+                                {{ __('Accedi') }}
                             </button>
 
                             @if (Route::has('password.request'))
