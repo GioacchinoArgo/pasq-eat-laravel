@@ -36,12 +36,12 @@
     <h1 class="me-4">Menu</h1>
     <div class="d-flex justify-content-end gap-2 p-2">
       <!-- Cestino -->
-      <a href="{{route('admin.dishes.trash')}}" class="btn-outline-index red fw-semibold ms-1 px-3 py-1 rounded-pill">
+      <a href="{{route('admin.dishes.trash')}}" class="data-btn red fw-semibold ms-1 px-3 py-1 rounded-pill">
           <i class="far fa-trash-can"></i>
           <span class="d-none d-xl-inline">Vedi Cestino</span>
       </a>
       <!-- Crea nuovo dish -->
-      <a href="{{route('admin.dishes.create')}}" class="btn-outline-index fw-semibold green ms-1 px-3 py-1 rounded-pill">
+      <a href="{{route('admin.dishes.create')}}" class="data-btn green text-decoration-none fw-semibold green ms-1 px-3 py-1 rounded-pill">
         <i class="fa-solid fa-plus"></i>
         <span class="d-none d-xl-inline">Aggiungi piatto</span>
       </a>
@@ -106,12 +106,12 @@
             <td>
               <div class="d-flex gap-2 flex-column flex-xl-row align-items-center justify-content-end">
                 {{--# COLLEGAMENTO A SHOW --}}
-                <a href="{{ route('admin.dishes.show', $dish->id)}}" class="rounded px-2 py-1 btn-outline-index blue fw-semibold">
+                <a href="{{ route('admin.dishes.show', $dish->id)}}" class="rounded px-2 py-1 data-btn blue fw-semibold">
                   <i class="far fa-eye"></i>
                 </a>
                 
                 {{--# COLLEGAMENTO A  EDIT --}}
-                <a href="{{ route('admin.dishes.edit', $dish->id)}}" class="rounded px-2 py-1 btn-outline-index yellow fw-semibold">
+                <a href="{{ route('admin.dishes.edit', $dish->id)}}" class="rounded px-2 py-1 data-btn orange fw-semibold">
                   <i class="fas fa-pencil"></i>
                 </a>
                 
@@ -120,7 +120,7 @@
                   method="POST" class="delete-form" data-dish="{{$dish->id}}" data-bs-toggle="modal" data-bs-target="#modal">
                   @csrf
                   @method('DELETE')
-                  <button class="rounded px-2 py-1 btn-outline-index red fw-semibold"><i class="far fa-trash-can"></i></button>
+                  <button class="rounded px-2 py-1 data-btn red fw-semibold"><i class="far fa-trash-can"></i></button>
                 </form>
               </div>
             </td>

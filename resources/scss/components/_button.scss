@@ -28,3 +28,21 @@
         background-color: $hover_orange;
     }
 }
+
+
+.red {
+    background-color: #DD2C2F;
+
+    &:hover {
+        background-color: #E35053;
+    }
+}
+
+
+.blue {
+    background-color: #023E8A;
+
+    &:hover {
+        background-color: #0077B6;
+    }
+}
