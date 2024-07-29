@@ -8,9 +8,9 @@
   <div class="mb-3 d-flex justify-content-between align-items-center spacing">
     <!--Filtro per Portata del Piatto-->
     <form class="filter-courses d-flex align-items-center justify-content-center" action="{{ route('admin.dishes.index') }}" method="GET">
-      <div class="input-group d-flex flex-column flex-lg-row gap-2">
-        <div class="col-12 col-sm-12 col-md-12 col-lg-5 mb-1">
-          <select role="button" id="coruse-filter" class="form-select fw-bold bg-transparent rounded-pill" name="course">
+      <div class="input-group d-flex align-items-lg-center flex-column flex-lg-row gap-2">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-5">
+          <select role="button" class="form-select border-dark fw-bold bg-transparent rounded-pill" name="course">
             <option class="fw-semibold" value="">Tutte le portate</option>
             @foreach ($courses as $course)
             <option class="fw-semibold" value="{{ $course }}"  {{ request('course') == $course ? 'selected' : '' }}>
@@ -21,14 +21,17 @@
         </div>
         <div class="col-12 flex-lg-row col-sm-12 col-md-12 col-lg-4 gap-2">
           <!--Filtro in base a disponibilità del piatto-->
-          <select id="availability-filter" role="button" class="form-select pe-5 fw-bold bg-transparent rounded-pill" name="availability"> 
+          <select role="button" class="form-select border-dark pe-5 fw-bold bg-transparent rounded-pill" name="availability"> 
             <option value="">Tutti</option>
             <option value="available" @if($availability==='available')selected @endif>Disponibile</option>
             <option value="not-available" @if($availability==='not-available')selected @endif>Non Disponibile</option>
           </select>
         </div>
         <div class="col-2 text-center">
-          <button class="btn-outline-index my-1 fw-semibold rounded-pill px-2 py-1 gray" type="submit">Filtra</button>
+          <button class="data-btn d-flex align-items-center gap-1 gray text-decoration-none fw-semibold ms-1 px-3 py-1 rounded-pill" type="submit">
+            <i class="fas fa-filter"></i>
+            <span class="d-none d-xl-inline">Filtra</span>
+          </button>
         </div>
       </div>
     </form>

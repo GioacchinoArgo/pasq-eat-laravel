@@ -46,3 +46,11 @@
         background-color: #0077B6;
     }
 }
+
+.gray {
+    background-color: $gray;
+
+    &:hover {
+        background-color: $hover_gray;
+    }
+}
