@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(Dish::class)->constrained()->cascadeOnDelete();
             $table->foreignIdFor(Order::class)->constrained()->cascadeOnDelete();
-            $table->decimal('price')->required();
-            $table->integer('quantity')->required();
+            // $table->decimal('price')->required();
+            // $table->integer('quantity')->required();
             $table->timestamps();
         });
     }
