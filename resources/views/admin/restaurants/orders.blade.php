@@ -17,7 +17,7 @@
                             <th class="large-column d-none d-lg-table-cell">Email</th>
                             <th>Indirizzo</th>
                             <th class="d-none d-lg-table-cell">Numero di Telefono</th>
-                            <th><strong>Totale ordine<br>€</strong></th>
+                            <th>Totale ordine</th>
                         </tr>
                     </thead>
                 </table>
@@ -35,7 +35,7 @@
                             <td class="large-column d-none d-lg-table-cell">{{$order->email}}</td>
                             <td>{{$order->address}}</td>
                             <td class="d-none d-lg-table-cell">{{$order->phone}}</td>
-                            <td><strong>{{$order->total}}</strong></td>
+                            <td><strong>{{$order->total}} €</strong></td>
                         </tr>
                         @empty
                         <tr>
@@ -45,8 +45,8 @@
                         </tr>
                         @endforelse
                         <tr>
-                            <td colspan="7" class="text-end">Totale ordini €</td>
-                            <td><strong>{{number_format($total_orders, 2)}}</strong></td>
+                            <td colspan="7" class="text-end">Totale ordini</td>
+                            <td><strong>{{number_format($total_orders, 2)}} €</strong></td>
                         </tr>
                     </tbody>
                 </table>
