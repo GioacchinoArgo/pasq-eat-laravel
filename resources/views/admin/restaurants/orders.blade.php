@@ -46,7 +46,7 @@
                         @endforelse
                         <tr>
                             <td colspan="7" class="text-end">Totale ordini €</td>
-                            <td>{{number_format($total_orders, 2)}}</td>
+                            <td><strong>{{number_format($total_orders, 2)}}</strong></td>
                         </tr>
                     </tbody>
                 </table>
