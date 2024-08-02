@@ -31,7 +31,7 @@ class Restaurant extends Model
 
     public function orders()
     {
-        return $this->hasMany(Dish::class);
+        return $this->hasMany(Order::class);
     }
 
     public function getFormattedDate($column, $format = 'd-m-Y')
