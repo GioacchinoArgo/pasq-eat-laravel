@@ -2,8 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\Dish;
+use App\Models\DishOrder;
 use App\Models\Order;
 use App\Models\Restaurant;
+use Faker\Generator;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -12,36 +15,11 @@ class OrderSeeder extends Seeder
     /**
      * Run the database seeds.
      */
-    public function run(): void
+    public function run(Generator $faker): void
     {
 
-        $restaurants = Restaurant::pluck('id');
-
-        $nomi = [
-            "Alessandro", "Giulia", "Francesco", "Lorenzo", "Martina", "Andrea", "Federica", "Matteo", "Chiara", "Simone",
-            "Valentina", "Giorgio", "Elena", "Luca", "Sara", "Marco", "Alice", "Davide", "Giovanna", "Claudio",
-            "Stefania", "Giovanni", "Paola", "Antonio", "Alessia", "Roberto", "Silvia", "Fabio", "Laura", "Enrico",
-            "Ilaria", "Carlo", "Francesca", "Giuseppe", "Michela", "Massimo", "Anna", "Stefano", "Elisabetta", "Vincenzo",
-            "Sofia", "Emanuele", "Marta", "Pietro", "Veronica", "Gabriele", "Rita", "Riccardo", "Bianca", "Daniele",
-            "Gianluca", "Serena", "Cristiano", "Caterina", "Filippo", "Aurora", "Mario", "Annalisa", "Tommaso", "Eleonora",
-            "Paolo", "Vanessa", "Vittorio", "Irene", "Alberto", "Edoardo", "Manuela", "Giacomo", "Antonella", "Dario",
-            "Beatrice", "Raffaele", "Marina", "Leonardo", "Gabriella", "Gianni", "Federico", "Claudia", "Gianfranco", "Barbara",
-            "Samuele", "Patrizia", "Diego", "Monica", "Alessio", "Daniela", "Mauro", "Lucia", "Sergio", "Nicoletta",
-            "Cristina", "Raffaella", "Umberto", "Alessandra", "Nicola", "Giada", "Ruggero", "Giovanni", "Valeria", "Flavio"
-        ];
-
-        $cognomi = [
-            "Rossi", "Ferrari", "Russo", "Bianchi", "Romano", "Colombo", "Ricci", "Marino", "Greco", "Bruno",
-            "Gallo", "Conti", "De Luca", "Costa", "Giordano", "Mancini", "Rizzo", "Lombardi", "Moretti", "Barbieri",
-            "Fontana", "Santoro", "Mariani", "Rinaldi", "Caruso", "Ferrara", "Gatti", "Bianco", "Martini", "Leone",
-            "Longo", "Gentile", "Martinelli", "Vitale", "Lombardo", "Serra", "Coppola", "De Santis", "D'Angelo", "Marchetti",
-            "Parisi", "Villa", "Conte", "Ferraro", "Ferri", "Fabbri", "Bianc", "Farinelli", "Pagani", "Palumbo",
-            "Silvestri", "Sanna", "Rossetti", "Montanari", "Grassi", "Orlando", "Neri", "Barone", "Massaro", "Amato",
-            "Guerra", "Benvenuti", "Sorrentino", "Sartori", "Damiani", "Monti", "Palumbo", "Piras", "Negri", "Ferri",
-            "Bruno", "Valente", "Amendola", "Messina", "Marra", "D'Amico", "Cattaneo", "Farina", "Costa", "Parisi",
-            "Caputo", "Mazza", "Riva", "Moretti", "Galli", "Mariani", "Neri", "Orlando", "Rizzi", "Lombardi",
-            "Giuliani", "Pagano", "Ferrari", "Montanari", "Martino", "Sanna", "Villa", "Esposito", "Pellegrini", "Caruso"
-        ];
+        $restaurants = Restaurant::pluck('id')->toArray();
+        $dishes = Dish::pluck('id')->toArray();
 
         $indirizzi = [
             'Via Roma 1', 'Via Milano 2', 'Piazza Venezia 3', 'Viale Europa 4', 'Corso Italia 5', 'Via Torino 6', 'Via Napoli 7', 'Via Genova 8', 'Piazza Garibaldi 9', 'Viale Libertà 10',
@@ -85,77 +63,59 @@ class OrderSeeder extends Seeder
 
         $orders = [];
 
-        foreach ($restaurants as $restaurant) {
+        // Funzione per generare gli ordini random
+        function generateRandomOrder($restaurantId, $dishes, $indirizzi, $numeri_di_telefono)
+        {
+            $selectedDishes = [];
+            for ($i = 0; $i < rand(1, 7); $i++) {
+                $selectedDishes[] = $dishes[array_rand($dishes)];
+            }
 
-            $index = [
-                [rand(1, 244)],
-                [rand(1, 244), rand(1, 244)],
-                [rand(1, 244), rand(1, 244), rand(1, 244)],
-                [rand(1, 244), rand(1, 244), rand(1, 244), rand(1, 244)],
-                [rand(1, 244), rand(1, 244), rand(1, 244), rand(1, 244), rand(1, 244)],
-                [rand(1, 244), rand(1, 244), rand(1, 244), rand(1, 244), rand(1, 244), rand(1, 244)],
-                [rand(1, 244), rand(1, 244), rand(1, 244), rand(1, 244), rand(1, 244), rand(1, 244), rand(0, 244)],
-            ];
-
-            $order1name = $nomi[rand(0, 99)];
-            $order2name = $nomi[rand(0, 99)];
-            $order3name = $nomi[rand(0, 99)];
-
-            $order1lastname = $cognomi[rand(0, 99)];
-            $order2lastname = $cognomi[rand(0, 99)];
-            $order3lastname = $cognomi[rand(0, 99)];
-
-            $indirizzo1 = $indirizzi[rand(0, 99)];
-            $indirizzo2 = $indirizzi[rand(0, 99)];
-            $indirizzo3 = $indirizzi[rand(0, 99)];
-
-            $orders[] = [
-                'restaurant_id' => $restaurant,
-                'dishes' => $index[rand(0, 6)],
-                'total' => rand(20, 50) + (rand(0, 99) / 100),
+            return [
+                'restaurant_id' => $restaurantId,
+                'dishes' => $selectedDishes,
                 'status' => (bool)rand(0, 1),
-                'name' => $order1name,
-                'lastname' => $order1lastname,
-                'email' => strtolower($order1name) . strtolower($order1lastname) . $emails[rand(0, 9)],
-                'address' => $indirizzo1,
-                'phone' => $numeri_di_telefono[rand(0, 95)],
+                'address' => $indirizzi[array_rand($indirizzi)],
+                'phone' => '+39' . ' ' . $numeri_di_telefono[array_rand($numeri_di_telefono)],
             ];
-            $orders[] = [
-                'restaurant_id' => $restaurant,
-                'dishes' => $index[rand(0, 6)],
-                'total' => rand(20, 50) + (rand(0, 99) / 100),
-                'status' => (bool)rand(0, 1),
-                'name' => $order2name,
-                'lastname' => $order2lastname,
-                'email' => strtolower($order2name) . strtolower($order2lastname) . $emails[rand(0, 9)],
-                'address' => $indirizzo2,
-                'phone' => '+39' . $numeri_di_telefono[rand(0, 95)],
-            ];
-            $orders[] = [
-                'restaurant_id' => $restaurant,
-                'dishes' => $index[rand(0, 6)],
-                'total' => rand(20, 50) + (rand(0, 99) / 100),
-                'status' => (bool)rand(0, 1),
-                'name' => $order3name,
-                'lastname' => $order3lastname,
-                'email' => strtolower($order3name) . strtolower($order3lastname) . $emails[rand(0, 9)],
-                'address' => $indirizzo3,
-                'phone' => $numeri_di_telefono[rand(0, 95)],
-            ];
+        }
+
+        // 
+        foreach ($restaurants as $restaurantId) {
+            for ($i = 0; $i < rand(2, 5); $i++) {
+                $orders[] = generateRandomOrder($restaurantId, $dishes, $indirizzi, $numeri_di_telefono);
+            }
         }
 
         foreach ($orders as $order) {
             $new_order = new Order();
             $new_order->restaurant_id = $order['restaurant_id'];
-            $new_order->total = $order['total'];
             $new_order->status = $order['status'];
-            $new_order->name = $order['name'];
-            $new_order->lastname = $order['lastname'];
-            $new_order->email = $order['email'];
+            $new_order->name = $faker->firstName();
+            $new_order->lastname = $faker->lastName();
+            $new_order->email = strtolower($new_order->name . '.' . $new_order->lastname . $emails[rand(0, 9)]);
             $new_order->address = $order['address'];
             $new_order->phone = $order['phone'];
+            $new_order->total = 0;
             $new_order->save();
-            $new_order->dishes()->attach($order['dishes']);
+
+            // Calcola il totale dell'ordine
+            $total = 0;
+            for ($i = 0; $i <= 1; $i++) {
+                $dish_order = new DishOrder();
+                $dish_order->order_id = $new_order->id;
+                $dish_order->dish_id = rand(1, 243);
+                $dish_order->price = Dish::find($dish_order->dish_id)->price;
+                $dish_order->quantity = count($order['dishes']);
+                $dish_order->total_price = $dish_order->price * $dish_order->quantity;
+                $dish_order->save();
+
+                // Calcola il costo totale del piatto nell'ordine
+                $total += $dish_order->price * $dish_order->quantity;
+            }
+
+            $new_order->total = $total;
+            $new_order->save();
         }
     }
 }
