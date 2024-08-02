@@ -104,7 +104,11 @@ class OrderSeeder extends Seeder
             for ($i = 0; $i <= 1; $i++) {
                 $dish_order = new DishOrder();
                 $dish_order->order_id = $new_order->id;
-                $dish_order->dish_id = rand(1, 243);
+
+                $restaurant = Restaurant::where('id', $new_order->restaurant_id)->first();
+                $dishes_orders = $restaurant->dishes()->pluck('id')->toArray();
+
+                $dish_order->dish_id = $dishes_orders[array_rand($dishes_orders)];
                 $dish_order->price = Dish::find($dish_order->dish_id)->price;
                 $dish_order->quantity = count($order['dishes']);
                 $dish_order->total_price = $dish_order->price * $dish_order->quantity;
