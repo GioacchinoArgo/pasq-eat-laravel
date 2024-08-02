@@ -82,7 +82,7 @@ class OrderSeeder extends Seeder
 
         // 
         foreach ($restaurants as $restaurantId) {
-            for ($i = 0; $i < rand(2, 5); $i++) {
+            for ($i = 0; $i < rand(3, 5); $i++) {
                 $orders[] = generateRandomOrder($restaurantId, $dishes, $indirizzi, $numeri_di_telefono);
             }
         }
