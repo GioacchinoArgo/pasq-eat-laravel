@@ -4,7 +4,7 @@
 
 @section('content')
     <section id="restaurant-show">
-        <div class="glass-card spacing p-4">
+        <div class="data-card spacing p-4">
             <div class="card-header mt-2">
                 <h1 class="text-center mb-5">{{$restaurant->restaurant_name}}</h1>
             </div>

@@ -37,12 +37,12 @@
                             <td>{{$order->address}}</td>
                             <td class="d-none d-lg-table-cell">{{$order->phone}}</td>
                             <td><strong>{{$order->total}} €</strong></td>
-                            {{--# COLLEGAMENTO A SHOW --}}
-                            {{-- <td>
-                                <a href="{{ route('admin.restaurants.orders.show', $order->restaurant_id, $order->id)}}" class="rounded px-2 py-1 data-btn blue fw-semibold">
+                            <td>
+                                {{--# COLLEGAMENTO A SHOW --}}
+                                <a href="{{ route('admin.orders.show', $order->id)}}" class="rounded px-2 py-1 data-btn blue fw-semibold">
                                     <i class="far fa-eye"></i>
                                 </a>
-                            </td> --}}
+                            </td>
                         </tr>
                         @empty
                         <tr>

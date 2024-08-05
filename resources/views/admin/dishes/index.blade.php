@@ -29,7 +29,7 @@
             </select>
           </div>
           <div class="col-2 text-center">
-            <button class="data-btn d-flex align-items-center gap-1 gray text-decoration-none fw-semibold ms-1 px-3 py-1 rounded-pill" type="submit">
+            <button class="data-btn gray d-flex align-items-center gap-1 text-decoration-none fw-semibold ms-1 px-3 py-1 rounded-pill" type="submit">
               <i class="fas fa-filter"></i>
               <span class="d-none d-xl-inline">Filtra</span>
             </button>

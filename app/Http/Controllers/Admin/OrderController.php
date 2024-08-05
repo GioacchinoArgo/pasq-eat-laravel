@@ -31,7 +31,23 @@ class OrderController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Restaurant $restaurant, Order $order)
+    public function show(Order $order)
     {
+        // Recuperiamo le informazioni del ristorante
+        $restaurant = Restaurant::whereId(Auth::id())->first();
+        $restaurant_name = $restaurant->restaurant_name;
+
+        $dishes = $order->dishes()->get();
+
+        if ($restaurant->user_id !== Auth::id()) {
+            abort(404);
+        };
+
+        if ($order->restaurant_id !== $restaurant->id) {
+            abort(404);
+        };
+
+
+        return view('admin.orders.show', compact('order', 'restaurant_name', 'dishes'));
     }
 }

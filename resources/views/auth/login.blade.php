@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container mt-4">
-    <div class="glass-card spacing px-4 py-4">
+    <div class="data-card spacing px-4 py-4">
         <div class="row">
             <div class="col">
                 <h1 class="text-center pb-4">{{ __('Accedi') }}</h1>

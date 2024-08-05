@@ -1,7 +1,7 @@
 @section('content')
 
 <section class="spacing">
-    <div class="glass-card p-4 my-5"> 
+    <div class="data-card p-4 my-5"> 
 
         <h1 class="text-center py-3">
             @if (Route::is('admin.dishes.create')) Aggiungi nuovo piatto
