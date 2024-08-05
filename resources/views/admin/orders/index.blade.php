@@ -16,8 +16,9 @@
                             <th>Cognome</th>
                             <th class="large-column d-none d-lg-table-cell">Email</th>
                             <th>Indirizzo</th>
-                            <th class="d-none d-lg-table-cell">Numero di Telefono</th>
+                            <th class="d-none d-lg-table-cell">N.Telefonico</th>
                             <th>Totale ordine</th>
+                            <th></th>
                         </tr>
                     </thead>
                 </table>
@@ -36,6 +37,12 @@
                             <td>{{$order->address}}</td>
                             <td class="d-none d-lg-table-cell">{{$order->phone}}</td>
                             <td><strong>{{$order->total}} €</strong></td>
+                            {{--# COLLEGAMENTO A SHOW --}}
+                            {{-- <td>
+                                <a href="{{ route('admin.restaurants.orders.show', $order->restaurant_id, $order->id)}}" class="rounded px-2 py-1 data-btn blue fw-semibold">
+                                    <i class="far fa-eye"></i>
+                                </a>
+                            </td> --}}
                         </tr>
                         @empty
                         <tr>
