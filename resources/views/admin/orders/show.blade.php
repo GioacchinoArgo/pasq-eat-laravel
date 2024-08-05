@@ -42,6 +42,13 @@
                     <p class="fs-5 fw-medium">Prezzo Totale: ?? € </p>
                 </div>
 
+                <div class="d-flex m-3">
+                    {{--# TORNA INDIETRO --}}
+                    <a href="{{route('admin.orders.index')}}" class="data-btn gray ms-1 px-3 py-2 rounded-pill d-flex align-items-center fw-semibold">
+                        <i class="fa-solid fa-left-long"></i>
+                        <span class="d-none ms-2 d-lg-block">Torna indietro</span>
+                    </a>
+                </div>
             </div>
         </div>
     </section>

@@ -166,10 +166,10 @@
 
                         {{-- Bottoni --}}
                         <div class="col-12 d-flex justify-content-between pt-2">
-                            <a href="{{route('admin.dishes.index')}}" class="btn-outline-index text-white fw-semibold gray ms-1 px-3 py-2 rounded-pill d-flex align-items-center text-white fw-semibold"><i class="fa-solid fa-left-long me-2"></i> Torna indietro</a>
+                            <a href="{{route('admin.dishes.index')}}" class="data-btn green rounded-pill gray fw-semibold ms-1 px-3 py-2"><i class="fa-solid fa-left-long me-2"></i> Torna indietro</a>
                             <div>
-                                <button class="btn-outline-index text-white fw-semibold green ms-1 px-3 py-2 rounded-pill align-items-center text-white fw-semibold me-2" type="submit"><i class="fa-solid fa-floppy-disk me-2"></i>Salva</button>
-                                <button class="btn-outline-index text-white fw-semibold yellow ms-1 px-3 py-2 rounded-pill align-items-center text-white fw-semibold text" type="reset"><i class="fa-solid fa-arrows-rotate me-2"></i>Svuota</button>
+                                <button class="data-btn rounded-pill green fw-semibold ms-1 px-3 py-2" type="submit"><i class="fa-solid fa-floppy-disk me-2"></i>Salva</button>
+                                <button class="data-btn rounded-pill red fw-semibold ms-1 px-3 py-2" type="reset"><i class="fa-solid fa-arrows-rotate me-2"></i>Svuota</button>
                             </div>
                         </div>
 
