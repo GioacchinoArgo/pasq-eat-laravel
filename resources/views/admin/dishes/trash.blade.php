@@ -92,7 +92,7 @@
             </td>
           </tr>
         @empty
-          <h1 class="text-white py-5">Non ci sono piatti da mostrare</h1>
+          <h1 class="py-5">Non ci sono piatti da mostrare</h1>
         @endforelse
       </tbody>
     </table>

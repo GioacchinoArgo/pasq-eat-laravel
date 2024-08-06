@@ -25,29 +25,30 @@
     
             <div class="collapse navbar-collapse align-items-baseline" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
-                <ul class="navbar-nav d-inline-block d-md-flex me-md-auto gap-2">
+                <ul class="navbar-nav d-inline-block d-md-flex align-items-center me-md-auto gap-2">
     
                     
+                    @guest()
+    
+                    @elseif (Auth::user()->restaurant)
+                    <li class="nav-item py-3">
+                        <a class="data-btn orange p-2 ps-sm-2 ps-md-2" href="{{route('admin.dishes.index')}}">Menu</a>
+                    </li>
+                    @endguest
     
                     @guest()
     
                     @elseif (Auth::user()->restaurant)
-                    <li class="nav-item">
-                        <a class="nav-link on-hover p-2 ps-sm-2 ps-md-2" href="{{route('admin.restaurants.show', Auth::user()->restaurant)}}">Ristorante</a>
+                    <li class="nav-item py-2">
+                        <a class="data-btn orange p-2 ps-sm-2 ps-md-2" href="{{route('admin.restaurants.show', Auth::user()->restaurant)}}">Ristorante</a>
                     </li>
                     @endguest
-                    @guest()
-    
-                    @elseif (Auth::user()->restaurant)
-                    <li class="nav-item">
-                        <a class="nav-link on-hover p-2 ps-sm-2 ps-md-2 d-inline d-md-block" href="{{route('admin.dishes.index')}}">Menu</a>
-                    </li>
-                    @endguest
+                    
     
                 </ul>
     
                 <!-- Right Side Of Navbar -->
-                <ul class="glass-dropdown list-unstyled d-sm-flex gap-3 mb-0">
+                <ul class="data-dropdown list-unstyled d-block d-sm-flex gap-3 mb-0">
                     <!-- Authentication Links -->
                     @guest
 
@@ -63,11 +64,11 @@
 
                     @else
 
-                    <li class="active">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle on-hover px-2 py-2 px-sm-2 py-sm-2" href="#" role="button" tabindex="0">
+                    <li class="active py-3">
+                        <a id="navbarDropdown" class="data-btn orange dropdown-toggle px-2 py-2 px-sm-2 py-sm-2" href="#" role="button" tabindex="0">
                             {{ Auth::user()->name }}
                         </a>
-                        <div class="glass-dropdown-content" aria-labelledby="navbarDropdown">
+                        <div class="data-dropdown-content" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{ url('dashboard') }}">{{__('Dashboard')}}</a>
                             <a class="dropdown-item my-2" href="{{ url('profile') }}">{{__('Profile')}}</a>
                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
