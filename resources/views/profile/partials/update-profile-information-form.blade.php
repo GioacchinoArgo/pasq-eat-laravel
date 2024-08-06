@@ -1,8 +1,5 @@
 <section>
     <div>
-        
-    </div>
-    <header>
         <h2 class="ms-3 text-black">
             {{ __('Informazioni del profilo') }}
         </h2>
@@ -10,7 +7,7 @@
         <p class="ms-3 mt-1 text-black">
             {{ __("Aggiorna le informazioni del profilo del tuo account e l'indirizzo email.") }}
         </p>
-    </header>
+    </div>
 
     <form id="send-verification" method="post" action="{{ route('verification.send') }}">
         @csrf
@@ -63,7 +60,7 @@
         </div>
 
         <div class="d-flex align-items-center gap-4">
-            <button class="btn-outline blue ms-1 px-3 py-1 rounded-pill" type="submit">{{ __('Salva') }}</button>
+            <button class="data-btn green ms-1 px-3 py-1 rounded-pill" type="submit">{{ __('Salva') }}</button>
 
             @if (session('status') === 'profile-updated')
             <script>

@@ -5,7 +5,7 @@
 @section('content')
 
 <div class="container spacing">
-    <h2 class="fs-4 text-black my-4">
+    <h2 class="fs-2 ms-3 text-black my-4">
         {{ __('Profilo') }}
     </h2>
     <div class="data-card p-4 mb-4 shadow rounded-lg">
@@ -21,7 +21,7 @@
 
     </div>
 
-    <div class="delete-glass-card p-4 mb-4 shadow rounded-lg">
+    <div class="data-card p-4 mb-4 shadow rounded-lg">
 
 
         @include('profile.partials.delete-user-form')
