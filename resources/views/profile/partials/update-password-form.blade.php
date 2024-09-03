@@ -1,5 +1,5 @@
 <section>
-    <header>
+    <div>
         <h2 class="ms-3 text-lg font-medium text-gray-900">
             {{ __('Aggiorna la password') }}
         </h2>
@@ -7,7 +7,7 @@
         <p class="ms-3 mt-1 text-sm text-gray-600">
             {{ __('Assicurati che il tuo account utilizzi una password lunga e casuale per garantire la sicurezza.') }}
         </p>
-    </header>
+    </div>
 
     <form method="post" action="{{ route('password.update') }}" class="mt-6 space-y-6">
         @csrf
@@ -45,7 +45,7 @@
         </div>
 
         <div class="d-flex align-items-center gap-4">
-            <button type="submit" class="btn-outline blue ms-1 px-3 py-1 rounded-pill">{{ __('Salva') }}</button>
+            <button type="submit" class="data-btn green ms-1 px-3 py-1 rounded-pill">{{ __('Salva') }}</button>
 
             @if (session('status') === 'password-updated')
             <script>
