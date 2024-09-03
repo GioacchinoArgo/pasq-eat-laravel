@@ -20,7 +20,7 @@
                             <div class="col-2 text-end">
 
                                 <!-- Quantità -->
-                                <p class="fs-5 mb-0"><strong>??</strong></p>
+                                <p class="fs-5 mb-0"><strong>{{ $dish->pivot->quantity }}</strong></p>
                             </div>
                             <div class="col">
 
@@ -39,7 +39,7 @@
 
                 <!-- prezzo lg -->
                 <div class="d-flex align-items-center justify-content-around btn-container py-3">
-                    <p class="fs-5 fw-medium">Prezzo Totale: ?? € </p>
+                    <p class="fs-5 fw-medium">Prezzo Totale: {{number_format($total_price, 2)}} € </p>
                 </div>
 
                 <div class="d-flex m-3">
