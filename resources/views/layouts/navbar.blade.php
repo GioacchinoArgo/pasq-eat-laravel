@@ -27,7 +27,7 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav d-inline-block d-md-flex align-items-center me-md-auto gap-2">
     
-                    
+                    {{-- Menu --}}
                     @guest()
     
                     @elseif (Auth::user()->restaurant)
@@ -36,15 +36,33 @@
                     </li>
                     @endguest
     
+                    {{-- Ristorante --}}
                     @guest()
     
                     @elseif (Auth::user()->restaurant)
-                    <li class="nav-item py-2">
+                    <li class="nav-item py-3">
                         <a class="data-btn orange p-2 ps-sm-2 ps-md-2" href="{{route('admin.restaurants.show', Auth::user()->restaurant)}}">Ristorante</a>
                     </li>
                     @endguest
-                    
+
+                    {{-- Ordini --}}
+                    @guest()
     
+                    @elseif (Auth::user()->restaurant->orders)
+                    <li class="nav-item py-3">
+                        <a class="data-btn orange p-2 ps-sm-2 ps-md-2" href="{{route('admin.orders.index')}}">Ordini</a>
+                    </li>
+                    @endguest
+
+                    {{-- Grafici --}}
+                    @guest()
+    
+                    @elseif (Auth::user()->restaurant->orders)
+                    <li class="nav-item py-3">
+                        <a class="data-btn orange p-2 ps-sm-2 ps-md-2" href="{{route('admin.orders.graphs')}}">Grafici</a>
+                    </li>
+                    @endguest
+                    
                 </ul>
     
                 <!-- Right Side Of Navbar -->

@@ -23,13 +23,16 @@
                             </div>
                             @endif
                             <div class="row justify-content-center">
-                                {{-- Finire di compilare gli href --}}
+
+                                {{-- Menu --}}
                                 <div class="col-6 col-sm-6 col-md-3 text-center my-5">
                                     <a href="{{route('admin.dishes.index')}}" class="effect">
                                         <img class="img-fluid w-50" src="{{asset('img/menu.png')}}" alt="menu">
                                         <h3 class="mt-3">Menù</h3>
                                     </a>
                                 </div>
+
+                                {{-- Ristorante --}}
                                 <div class="col-6 col-sm-6 col-md-3 text-center my-5">
                                     <a href="{{route('admin.restaurants.show', Auth::user()->restaurant)}}" class="effect">
                                         <img class="img-fluid w-50" src="{{asset('img/restaurant.png')}}" alt="ristorante">
@@ -37,12 +40,22 @@
                                     </a>
                                 </div>
 
+                                {{-- Ordini --}}
                                 <div class="col-6 col-sm-6 col-md-3 text-center my-5">
                                     <a href="{{route('admin.orders.index')}}" class="effect">
                                         <img class="img-fluid w-50" src="{{asset('img/receipt.png')}}" alt="ordine">
                                         <h3 class="mt-3">Ordini</h3>
                                     </a>
                                 </div>
+
+                                {{-- Grafici --}}
+                                <div class="col-6 col-sm-6 col-md-3 text-center my-5">
+                                    <a href="{{route('admin.orders.graphs')}}" class="effect">
+                                        <img class="img-fluid w-50" src="{{asset('img/graph.png')}}" alt="grafico">
+                                        <h3 class="mt-3">Grafici</h3>
+                                    </a>
+                                </div>
+
                             </div>
                     </div>
                     
