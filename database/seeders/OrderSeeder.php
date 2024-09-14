@@ -74,15 +74,29 @@ class OrderSeeder extends Seeder
             return [
                 'restaurant_id' => $restaurantId,
                 'dishes' => $selectedDishes,
-                'status' => (bool)rand(0, 1),
+                'status' => true,
                 'address' => $indirizzi[array_rand($indirizzi)],
                 'phone' => '+39' . ' ' . $numeri_di_telefono[array_rand($numeri_di_telefono)],
             ];
         }
 
+        // Funzione per generare una data casuale tra due date
+        function randomDate($start_date, $end_date)
+        {
+            $min = strtotime($start_date);
+            $max = strtotime($end_date);
+
+            $val = rand($min, $max);
+
+            return date('Y-m-d H:i:s', $val);
+        }
+
+        $start_date = '2024-01-01';
+        $end_date = '2024-08-05';
+
         // 
         foreach ($restaurants as $restaurantId) {
-            for ($i = 0; $i < rand(3, 5); $i++) {
+            for ($i = 0; $i < rand(15, 30); $i++) {
                 $orders[] = generateRandomOrder($restaurantId, $dishes, $indirizzi, $numeri_di_telefono);
             }
         }
@@ -97,20 +111,21 @@ class OrderSeeder extends Seeder
             $new_order->address = $order['address'];
             $new_order->phone = $order['phone'];
             $new_order->total = 0;
+            $new_order->created_at = randomDate($start_date, $end_date);
             $new_order->save();
 
             // Calcola il totale dell'ordine
             $total = 0;
-            for ($i = 0; $i <= 1; $i++) {
+            for ($i = 0; $i < count($order['dishes']); $i++) {
                 $dish_order = new DishOrder();
                 $dish_order->order_id = $new_order->id;
 
                 $restaurant = Restaurant::where('id', $new_order->restaurant_id)->first();
-                $dishes_orders = $restaurant->dishes()->pluck('id')->toArray();
+                $restaurant_dishes = $restaurant->dishes()->pluck('id')->toArray();
 
-                $dish_order->dish_id = $dishes_orders[array_rand($dishes_orders)];
+                $dish_order->dish_id = $restaurant_dishes[array_rand($restaurant_dishes)];
                 $dish_order->price = Dish::find($dish_order->dish_id)->price;
-                $dish_order->quantity = count($order['dishes']);
+                $dish_order->quantity = rand(1, 7);
                 $dish_order->total_price = $dish_order->price * $dish_order->quantity;
                 $dish_order->save();
 
