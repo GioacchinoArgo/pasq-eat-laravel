@@ -53,6 +53,7 @@ Route::middleware('auth')->group(function () {
         Route::put('/restaurants/{restaurant}', [RestaurantController::class, 'update'])->name('restaurants.update');
 
         // Rotte degli ordini
+        Route::get('/orders/graphs', [OrderController::class, 'graphs'])->name('orders.graphs');
         Route::get('/orders/{order}', [OrderController::class, 'show'])->name('orders.show');
         Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
     });
