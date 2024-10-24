@@ -3,53 +3,53 @@
 @section('title', 'Ordine')
 
 @section('content')
-    <section id="order-show">
-        <h1 class="my-5">{{$restaurant_name}}</h1>
-        <div class="col-10 mx-auto mb-6">
-            <div class="data-card">
-                <!-- Titolo -->
-                <div class="d-flex align-items-center justify-content-center cart-title gap-2">
-                    <h3 class="mb-0 py-4">Riepilogo ordine</h3>
-                </div>
+    <section id="order-show" class="spacing">
+        <h1 class="my-5">Riepilogo ordine - {{$restaurant_name}}</h1>
 
-                <!-- Riepilogo ordine -->
-                <div class="cart-content">
-                    @foreach ($dishes as $dish)
-                        <div class="row align-items-center my-3">
-                            {{-- Contenuto ordine --}}
-                            <div class="col-2 text-end">
-
-                                <!-- Quantità -->
-                                <p class="fs-5 mb-0"><strong>{{ $dish->pivot->quantity }}</strong></p>
-                            </div>
-                            <div class="col">
-
-                                <!-- Nome del prodotto -->
-                                <p class="fs-5 text-center mb-0 lh-1 fw-medium">{{ $dish->name }}</p>
-                            </div>
-                            <div class="col-2">
-
-                                <!-- Prezzo -->
-                                <p class="fs-5 mb-0"><strong>{{$dish->price}} €</strong></p>
-                            </div>
-
-                        </div>
-                    @endforeach
-                </div>
-
-                <!-- prezzo lg -->
-                <div class="d-flex align-items-center justify-content-around btn-container py-3">
-                    <p class="fs-5 fw-medium">Prezzo Totale: {{number_format($total_price, 2)}} € </p>
-                </div>
-
-                <div class="d-flex m-3">
-                    {{--# TORNA INDIETRO --}}
-                    <a href="{{route('admin.orders.index')}}" class="data-btn gray ms-1 px-3 py-2 rounded-pill d-flex align-items-center fw-semibold">
-                        <i class="fa-solid fa-left-long"></i>
-                        <span class="d-none ms-2 d-lg-block">Torna indietro</span>
-                    </a>
-                </div>
-            </div>
+        {{-- Tabella --}}
+        <div class="tbl-header">
+            <table class="text-center">
+                <thead>
+                    <tr>
+                        <th>Quantità</th>
+                        <th>Piatto</th>
+                        <th>Prezzo Totale</th>
+                    </tr>
+                </thead>
+            </table>
         </div>
+
+        <div class="tbl-content">
+            <table>
+                <tbody>
+
+                    @foreach ($dishes as $dish)
+                        <tr>
+                            <td class="text-center td-spacing">{{$dish->pivot->quantity}}</td>
+                            <td class="text-center td-spacing">{{$dish->name}}</td>
+                            <td class="text-center td-spacing"><strong>{{$dish->pivot->total_price}} €</strong></td>
+                        </tr>
+                    @endforeach
+                    
+                    <tr>
+                        <td colspan="3" class="text-center pt-0 pb-4 fs-4">
+                            <div class="ciccio mb-4 mx-auto border-top rounded border-secondary w-50"></div>
+                            Totale ordini: 
+                            <strong>{{number_format($total_order, 2)}} €</strong></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+         {{--# TORNA INDIETRO --}}
+         <div class="d-flex mt-4">
+             <a href="{{route('admin.orders.index')}}" class="data-btn gray ms-1 px-3 py-2 rounded-pill d-flex align-items-center fw-semibold">
+                <i class="fa-solid fa-left-long"></i>
+                <span class="d-none ms-2 d-lg-block">Torna indietro</span>
+            </a>
+         </div>
+
+        
     </section>
 @endsection
