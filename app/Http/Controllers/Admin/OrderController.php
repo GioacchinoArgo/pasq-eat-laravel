@@ -47,12 +47,12 @@ class OrderController extends Controller
             abort(404);
         };
 
-        $total_price = 0;
+        $total_order = 0;
         foreach ($dishes as $dish) {
-            $total_price += $dish->pivot->total_price;
+            $total_order += $dish->pivot->total_price;
         }
 
-        return view('admin.orders.show', compact('order', 'restaurant_name', 'dishes', 'total_price'));
+        return view('admin.orders.show', compact('order', 'restaurant_name', 'dishes', 'total_order'));
     }
 
     public function graphs(Request $request)
