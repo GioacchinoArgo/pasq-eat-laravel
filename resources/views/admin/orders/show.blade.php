@@ -11,28 +11,38 @@
             <table class="text-center">
                 <thead>
                     <tr>
-                        <th>Quantità</th>
+                        <th class="d-none d-lg-table-cell">Immagine</th>
                         <th>Piatto</th>
+                        <th>Quantità</th>
                         <th>Prezzo Totale</th>
                     </tr>
                 </thead>
             </table>
         </div>
 
-        <div class="tbl-content">
+        <div class="tbl-order">
             <table>
                 <tbody>
 
                     @foreach ($dishes as $dish)
                         <tr>
-                            <td class="text-center td-spacing">{{$dish->pivot->quantity}}</td>
-                            <td class="text-center td-spacing">{{$dish->name}}</td>
+                            <td class="text-center d-flex justify-content-center d-none d-lg-table-cell">
+                                <div class="index-img mx-auto">
+                                  @if ($dish->image)
+                                      <img src="{{asset('storage/' . $dish->image)}}" alt="foto-{{$dish->slug}}" class="img-fluid rounded-circle">
+                                  @else
+                                      <img src="{{asset('/images/default-dish.png')}}" alt="" class="img-fluid rounded-circle">
+                                  @endif
+                                </div>
+                              </td>
+                              <td class="text-center td-spacing">{{$dish->name}}</td>
+                              <td class="text-center td-spacing">{{$dish->pivot->quantity}}</td>
                             <td class="text-center td-spacing"><strong>{{$dish->pivot->total_price}} €</strong></td>
                         </tr>
                     @endforeach
                     
                     <tr>
-                        <td colspan="3" class="text-center pt-0 pb-4 fs-4">
+                        <td colspan="4" class="text-center pt-0 pb-4 fs-4">
                             <div class="ciccio mb-4 mx-auto border-top rounded border-secondary w-50"></div>
                             Totale ordini: 
                             <strong>{{number_format($total_order, 2)}} €</strong></td>

@@ -1,3 +1,5 @@
+// Da Sistemare
+
 #show-orders {
     td {
         text-align: center;
@@ -11,4 +13,14 @@
         width: 250px;
         word-wrap: break-word;
     }
+}
+
+//-------------
+
+.tbl-order {
+    max-height: 420px;
+    overflow-x: auto;
+    margin-top: 0px;
+    box-shadow: rgba(50, 50, 93, 0.2) 0px 13px 27px -5px, rgba(0, 0, 0, 0.2) 0px 8px 16px -8px;
+    border-radius: 0 0 0 20px;
 }
