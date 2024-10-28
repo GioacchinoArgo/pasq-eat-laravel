@@ -1,6 +1,7 @@
 <header class="shadow-sm">
     <nav class="navbar navbar-expand-md">
         <div class="container">
+
             <a class="navbar-brand d-flex align-items-center py-0" 
                 href="
                     @guest ()
@@ -66,12 +67,12 @@
                 </ul>
     
                 <!-- Right Side Of Navbar -->
-                <ul class="data-dropdown list-unstyled d-block d-sm-flex gap-3 mb-0">
+                <ul class="data-dropdown list-unstyled d-block d-md-flex gap-3 mb-0">
                     <!-- Authentication Links -->
                     @guest
 
                     {{-- Login --}}
-                    <li class="nav-item my-4 my-md-0 text-center">
+                    <li class="nav-item my-4 my-md-0">
                         <a class="data-btn orange p-2 p-sm-2 p-md-2" href="{{ route('login') }}">{{ __('Login') }}</a>
                     </li>
 
