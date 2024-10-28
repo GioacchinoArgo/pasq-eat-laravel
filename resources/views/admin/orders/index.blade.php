@@ -3,7 +3,7 @@
 @section('title', 'Riepilogo Ordini')
 
 @section('content')
-        <section id="show-orders">
+        <section id="show-orders" class="spacing">
             <h1 class="text-center my-5">Riepilogo ordini di {{$restaurant_name}}</h1>
             <div class="tbl-header">
                 <table class="text-center">

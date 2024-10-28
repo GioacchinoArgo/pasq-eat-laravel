@@ -33,7 +33,7 @@
     
                     @elseif (Auth::user()->restaurant)
                     <li class="nav-item py-3">
-                        <a class="data-btn orange p-2 ps-sm-2 ps-md-2" href="{{route('admin.dishes.index')}}">Menu</a>
+                        <a class="data-btn badge-btn orange p-2 ps-sm-2 ps-md-2" href="{{route('admin.dishes.index')}}">Menu</a>
                     </li>
                     @endguest
     
@@ -42,7 +42,7 @@
     
                     @elseif (Auth::user()->restaurant)
                     <li class="nav-item py-3">
-                        <a class="data-btn orange p-2 ps-sm-2 ps-md-2" href="{{route('admin.restaurants.show', Auth::user()->restaurant)}}">Ristorante</a>
+                        <a class="data-btn badge-btn orange p-2 ps-sm-2 ps-md-2" href="{{route('admin.restaurants.show', Auth::user()->restaurant)}}">Ristorante</a>
                     </li>
                     @endguest
 
@@ -51,7 +51,7 @@
     
                     @elseif (Auth::user()->restaurant->orders)
                     <li class="nav-item py-3">
-                        <a class="data-btn orange p-2 ps-sm-2 ps-md-2" href="{{route('admin.orders.index')}}">Ordini</a>
+                        <a class="data-btn badge-btn orange p-2 ps-sm-2 ps-md-2" href="{{route('admin.orders.index')}}">Ordini</a>
                     </li>
                     @endguest
 
@@ -60,7 +60,7 @@
     
                     @elseif (Auth::user()->restaurant->orders)
                     <li class="nav-item py-3">
-                        <a class="data-btn orange p-2 ps-sm-2 ps-md-2" href="{{route('admin.orders.graphs')}}">Grafici</a>
+                        <a class="data-btn badge-btn orange p-2 ps-sm-2 ps-md-2" href="{{route('admin.orders.graphs')}}">Grafici</a>
                     </li>
                     @endguest
                     
@@ -84,7 +84,7 @@
                     @else
 
                     <li class="active py-3">
-                        <a id="navbarDropdown" class="data-btn orange dropdown-toggle px-2 py-2 px-sm-2 py-sm-2" href="#" role="button" tabindex="0">
+                        <a id="navbarDropdown" class="data-btn badge-btn orange dropdown-toggle px-2 py-2 px-sm-2 py-sm-2" href="#" role="button" tabindex="0">
                             {{ Auth::user()->name }}
                         </a>
                         <div class="data-dropdown-content" aria-labelledby="navbarDropdown">

@@ -3,7 +3,7 @@
 @section('title', 'Grafico Ordini')
 
 @section('content')
-        <section id="show-graphs" class="py-4">
+        <section id="show-graphs" class="py-4 spacing">
             <h1 class="text-center my-5">Grafici di {{$restaurant_name}}</h1>
 
             <div class="row gap-4 gap-lg-0">
