@@ -11,7 +11,7 @@
             <table class="text-center">
                 <thead>
                     <tr>
-                        <th class="d-none d-lg-table-cell">Immagine</th>
+                        <th>Immagine</th>
                         <th>Piatto</th>
                         <th>Quantità</th>
                         <th>Prezzo Prodotto</th>
@@ -26,7 +26,7 @@
 
                     @foreach ($dishes as $dish)
                         <tr>
-                            <td class="text-center d-flex justify-content-center d-none d-lg-table-cell">
+                            <td class="text-center d-flex justify-content-center">
                                 <div class="index-img mx-auto">
                                   @if ($dish->image)
                                       <img src="{{asset('storage/' . $dish->image)}}" alt="foto-{{$dish->slug}}" class="img-fluid rounded-circle">
