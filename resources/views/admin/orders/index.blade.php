@@ -46,14 +46,17 @@
                         </tr>
                         @empty
                         <tr>
-                            <td colspan="8" class="py-4">
+                            <td colspan="9" class="py-4">
                                 <h3>Non sono ancora stati effettuati ordini</h3>
                             </td>   
                         </tr>
                         @endforelse
                         <tr>
-                            <td colspan="7" class="text-end">Totale ordini</td>
-                            <td><strong>{{number_format($total_orders, 2)}} €</strong></td>
+                            <td colspan="9" class="text-center pb-4 fs-4">
+                                <div class="ciccio mb-4 mx-auto border-top rounded border-secondary-subtle w-50"></div>
+                                Totale ordine: 
+                                <strong>{{number_format($total_orders, 2)}} €</strong>
+                            </td>
                         </tr>
                     </tbody>
                 </table>

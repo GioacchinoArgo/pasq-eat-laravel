@@ -14,7 +14,7 @@
                         <th class="d-none d-lg-table-cell">Immagine</th>
                         <th>Piatto</th>
                         <th>Quantità</th>
-                        <th>Prezzo Totale</th>
+                        <th>Prezzo Prodotto</th>
                     </tr>
                 </thead>
             </table>
@@ -43,9 +43,10 @@
                     
                     <tr>
                         <td colspan="4" class="text-center pt-0 pb-4 fs-4">
-                            <div class="ciccio mb-4 mx-auto border-top rounded border-secondary w-50"></div>
-                            Totale ordini: 
-                            <strong>{{number_format($total_order, 2)}} €</strong></td>
+                            <div class="ciccio mb-4 mx-auto border-top rounded border-secondary-subtle w-50"></div>
+                            Totale ordine: 
+                            <strong>{{number_format($total_order, 2)}} €</strong>
+                        </td>
                     </tr>
 
                 </tbody>
