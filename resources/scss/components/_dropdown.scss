@@ -11,6 +11,8 @@
     display: none;
     position: absolute;
     top: 60px;
+    left: 50%;
+    translate: -50%;
     background-color: #f3f3f3ea;
     min-width: 160px;
     z-index: 1;
@@ -41,4 +43,8 @@
     background-color: $orange;
     color: $white;
     text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.data-container {
+    width: 85%;
 }
