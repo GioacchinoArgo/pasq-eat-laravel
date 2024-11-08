@@ -4,12 +4,12 @@
 
 @section('content')
 <section id='dishes-trash' class="spacing">
-    <div class="mb-2 d-flex justify-content-between align-items-center">
-      <a href="{{route('admin.dishes.index')}}" class="btn-outline-index fw-semibold gray text-white ms-1 px-3 py-1 py-md-2 rounded-pill">
+    <div class="mb-3 d-flex justify-content-between align-items-center">
+      <a href="{{route('admin.dishes.index')}}" class="data-btn gray fw-semibold ms-1 px-3 py-1 rounded-pill">
         <i class="fa-solid fa-arrow-left"></i>
         <span class="d-none d-md-inline-block">Torna indietro</span>
       </a>
-      <h1 class="text-white text-center mb-0">Piatti Eliminati</h1>
+      <h1 class="text-center mb-0">Piatti Eliminati</h1>
     </div>
     {{--Tabella--}}
     <div class="tbl-header">
@@ -22,7 +22,7 @@
           <th class="d-none d-lg-table-cell">Portata</th>
           <th class="d-none d-lg-table-cell">Dieta</th>
           <th>Prezzo</th>
-          <th>Ultima modifica</th>
+          <th class="d-none d-sm-table-cell">Ultima modifica</th>
           <th></th>
         </tr>
       </thead>
@@ -46,7 +46,7 @@
             <td class="text-center">{{$dish->name}}</td>
             {{--Disponibilità--}}
             <td class="text-center">
-              @if ($dish->availability == 1)
+              @if ($dish->availability)
                 <span class="stamp is-available"></span> 
               @else
                 <span class="stamp not-available"></span>
@@ -66,16 +66,16 @@
             </td>
             {{--Prezzo--}}
             <td class="text-center">{{$dish->price}} €</td>
-            <td class="text-center">{{$dish->getFormattedDate('updated_at', 'd/m/Y H:i')}}</td>
+            <td class="text-center d-none d-sm-table-cell">{{$dish->getFormattedDate('updated_at', 'd/m/Y H:i')}}</td>
             <td>
               <div class="d-flex gap-2 flex-column flex-xl-row align-items-center justify-content-end">
                 {{--# COLLEGAMENTO A SHOW --}}
-                <a href="{{ route('admin.dishes.show', $dish->id)}}" class="rounded px-2 py-1 btn-outline-index blue">
+                <a href="{{ route('admin.dishes.show', $dish->id)}}" class="rounded px-2 py-1 data-btn blue fw-semibold">
                   <i class="far fa-eye"></i>
                 </a>
                 
                 {{--# COLLEGAMENTO A  EDIT --}}
-                <a href="{{ route('admin.dishes.edit', $dish->id)}}" class="rounded px-2 py-1 btn-outline-index yellow">
+                <a href="{{ route('admin.dishes.edit', $dish->id)}}" class="rounded px-2 py-1 data-btn orange fw-semibold">
                   <i class="fas fa-pencil"></i>
                 </a>
 
@@ -84,7 +84,7 @@
                     class="form-delete" data-dish="{{$dish->title}}">
                     @csrf
                     @method('PATCH')
-                    <button  class="rounded px-2 py-1 btn-outline-index green">
+                    <button  class="rounded px-2 py-1 data-btn green fw-semibold">
                         <i class="fas fa-arrows-rotate"></i>
                     </button>
                 </form>
@@ -92,7 +92,7 @@
             </td>
           </tr>
         @empty
-          <h1 class="text-white py-5">Non ci sono piatti da mostrare</h1>
+          <h1 class="py-5">Non ci sono piatti da mostrare</h1>
         @endforelse
       </tbody>
     </table>

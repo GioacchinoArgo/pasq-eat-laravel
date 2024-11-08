@@ -2,7 +2,7 @@
     color: #f5f4f3;
 }
 
-.glass-card {
+.data-card {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -11,33 +11,16 @@
     border-radius: 20px;
     background-color: rgba(255, 255, 255, 0.35);
     box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
-    backdrop-filter: blur(15px);
 
     a {
         text-decoration: none;
         color: black;
     }
+
 }
-
-.delete-glass-card {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
-    border: 1px solid rgba(255, 255, 255, .25);
-    border-radius: 20px;
-    background-color: rgba(255, 255, 255, 0.30);
-    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
-
-    a {
-        text-decoration: none;
-        color: black;
-    }
-}
-
 
 .spacing {
-    margin: 120px auto 0
+    margin: 120px auto 0;
 }
 
 .effect {

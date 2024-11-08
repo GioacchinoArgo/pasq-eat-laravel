@@ -18,7 +18,7 @@ deleteForms.forEach((form, i) => {
 
         // Inserisco i contenuti
         confirmationButton.innerText = 'Elimina';
-        confirmationButton.className = 'btn-outline-index text-white fw-semibold red ms-1 px-3 py-2 rounded-pill';
+        confirmationButton.className = 'data-btn red fw-semibold red ms-1 px-3 py-2 rounded-pill';
         modalTitle.innerText = `Elimina ${dishes[i].name}`;
         modalBody.innerHTML = `
             <div class="d-none d-lg-block col-3 text-center">

@@ -1,7 +1,7 @@
 @section('content')
 
 <section class="spacing">
-    <div class="glass-card p-4 my-5"> 
+    <div class="data-card p-4 my-5"> 
 
         <h1 class="text-center py-3">
             @if (Route::is('admin.dishes.create')) Aggiungi nuovo piatto
@@ -27,18 +27,22 @@
                     <div class="row align-items-center">
 
                         {{-- INPUT AVAILABILITY --}}
-                        <div class="col-12 mb-3">
-                            <div class="form-check form-switch d-flex p-0">
-                                <label class="form-check-label mb-2 ms-3" for="availability">Status articolo</label>
-                                <div class="ms-5">
-                                    <label class="form-check-label" id="availability-label" for="availability"></label>
-                                    <input class="form-check-input" type="checkbox" role="switch" id="availability" 
-                                    name="availability"
-                                    @if(old('availability', $dish->availability) == 1) checked @endif
-                                    >
-                                </div>
-                            </div> 
-                        </div>
+                        @if (!$dish->deleted_at)
+                            
+                            <div class="col-12 mb-3">
+                                <div class="form-check form-switch d-flex p-0">
+                                    <label class="form-check-label mb-2 ms-3" for="availability">Status articolo</label>
+                                    <div class="ms-5">
+                                        <label class="form-check-label" id="availability-label" for="availability"></label>
+                                        <input class="form-check-input" type="checkbox" role="switch" id="availability" 
+                                        name="availability"
+                                        @if(old('availability', $dish->availability) == 1) checked @endif
+                                        >
+                                    </div>
+                                </div> 
+                            </div>
+
+                        @endif
         
                         {{-- INPUT NOME DEL PIATTO --}}
                         <div class="col-12 mb-3">
@@ -117,7 +121,7 @@
                         </div>
         
                         {{-- INPUT GROUP PRICE --}}
-                        <div class="mb-3 col-6 col-sm-4 col-xl-5">
+                        <div class="mb-3 col-6 col-md-4 col-xl-5">
                             <label class="form-label label ms-3" for="price">
                                 Prezzo piatto
                                 <span class="text-danger"><strong><sup>*</sup></strong></span>
@@ -133,7 +137,7 @@
                         </div>
         
                         {{-- INPUT IMMAGINE --}}
-                        <div class="col-6 col-sm-6 col-xl-5 mb-3">
+                        <div class="col-6 col-md-5 col-xl-5 mb-3">
                             <div class="d-flex flex-column">
                                 <label class="form-label label ms-3">Upload Immagine</label>
                                 <input type="file" name="image" id="uploadBtn" class="form-control bg-transparent border-dark-light rounded-pill @error('image') is-invalid @elseif(old('image')) is-valid @enderror">
@@ -151,21 +155,21 @@
                         </div>
 
                         {{-- CAMPO PREVIEW IMAGE --}}
-                        <div class="col-2 col-md-2 align-items-center d-none d-md-flex">
+                        <div class="col-md-3 col-xl-2 align-items-center justify-content-center d-none d-md-flex">
                             <img id="preview" src="{{ old('image', $dish->image)
                             ? asset('storage/' . old('image', $dish->image)) 
-                            : asset('/images/default-dish.png')}}" 
+                            : 'https://www.altavod.com/assets/images/poster-placeholder.png'}}" 
                             alt="{{ $dish->slug }}" class="img-fluid">
                         </div>
 
-                        <p class="asterisk mb-3 text-center me-3">I campi contrassegnati con <span class="text-danger"><strong><sup>*</sup></strong></span> sono obbligatori</p>
+                        <p class="asterisk my-2 text-center">I campi contrassegnati con <span class="text-danger"><strong><sup>*</sup></strong></span> sono obbligatori</p>
 
                         {{-- Bottoni --}}
                         <div class="col-12 d-flex justify-content-between pt-2">
-                            <a href="{{route('admin.dishes.index')}}" class="btn-outline-index text-white fw-semibold gray ms-1 px-3 py-2 rounded-pill d-flex align-items-center text-white fw-semibold"><i class="fa-solid fa-left-long me-2"></i> Torna indietro</a>
-                            <div>
-                                <button class="btn-outline-index text-white fw-semibold green ms-1 px-3 py-2 rounded-pill align-items-center text-white fw-semibold me-2" type="submit"><i class="fa-solid fa-floppy-disk me-2"></i>Salva</button>
-                                <button class="btn-outline-index text-white fw-semibold yellow ms-1 px-3 py-2 rounded-pill align-items-center text-white fw-semibold text" type="reset"><i class="fa-solid fa-arrows-rotate me-2"></i>Svuota</button>
+                            <a href="{{route('admin.dishes.index')}}" class="data-btn d-flex green rounded-pill gray fw-semibold ms-1 px-4 px-sm-3 py-2"><i class="fa-solid fa-left-long me-sm-2"></i><span class="d-none d-sm-inline">Torna indietro</span></a>
+                            <div class="d-flex">
+                                <button class="data-btn d-flex align-items-center rounded-pill green fw-semibold ms-1 px-4 px-sm-3 py-2" type="submit"><i class="fa-solid fa-floppy-disk me-sm-2"></i><span class="d-none d-sm-inline">Salva</span></button>
+                                <button class="data-btn d-flex align-items-center rounded-pill red fw-semibold ms-1 px-4 px-sm-3 py-2" type="reset"><i class="fa-solid fa-arrows-rotate me-sm-2"></i><span class="d-none d-sm-inline">Svuota</span></button>
                             </div>
                         </div>
 
@@ -184,16 +188,19 @@
 <script>
 
     // Label di availability dinamico
-    document.getElementById('availability').addEventListener('change', function() {;
-        const label = document.getElementById('availability-label');
-        const input = document.getElementById('availability');
-        
-        if (input.checked) {
-            label.textContent = 'disponibile';
-        } else {
-            label.textContent = 'non disponibile';
-        }
-    });
+    const availability = document.getElementById('availability')
+    if (availability) {
+        availability.addEventListener('change', function() {
+            const label = document.getElementById('availability-label');
+            const input = document.getElementById('availability');
+            
+            if (input.checked) {
+                label.textContent = 'disponibile';
+            } else {
+                label.textContent = 'non disponibile';
+            }
+        });
+    }
 
     // setto la visualizzazione dinamica dell'immagine in pagina
     const imageField = document.getElementById('uploadBtn');

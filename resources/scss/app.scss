@@ -13,30 +13,38 @@
 @import './views/index';
 @import './views/show';
 @import './views/show-orders';
-
+@import './_media_query';
 
 @import '~bootstrap/scss/bootstrap';
 
 body {
-    min-height: 100vh;
     visibility: visible;
-    font-family: "IBM Plex Mono", monospace;
+    font-family: "Nunito", sans-serif;
 
-    background-image: linear-gradient(to left, #1e498b, #006fac, #0095bd, #00b8c0, #49daba);
-    background-size: cover;
+    background-color: #fdfdfd;
 }
 
-html::-webkit-scrollbar {
-    width: 10px;
+main {
+    height: calc(100vh - 80px);
+    overflow: auto;
+    overflow-x: hidden;
 }
 
-html::-webkit-scrollbar-track {
+main::-webkit-scrollbar {
+    width: 5px;
+}
+
+main::-webkit-scrollbar-track {
     background: $white;
 }
 
-html::-webkit-scrollbar-thumb {
+main::-webkit-scrollbar-thumb {
     background: rgba(42, 41, 41, 0.383);
 
+}
+
+body::-webkit-scrollbar {
+    width: 0;
 }
 
 .asterisk {

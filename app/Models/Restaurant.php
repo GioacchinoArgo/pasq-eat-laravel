@@ -29,6 +29,11 @@ class Restaurant extends Model
         return $this->belongsToMany(Category::class);
     }
 
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
+
     public function getFormattedDate($column, $format = 'd-m-Y')
     {
         return Carbon::create($this->$column)->format($format);

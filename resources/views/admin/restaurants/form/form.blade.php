@@ -8,7 +8,7 @@
     
 @endif
     @csrf
-    <div class="glass-card p-5">
+    <div class="data-card p-5">
         <div class="row">
 
         {{-- Input Nome --}}

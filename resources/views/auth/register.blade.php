@@ -3,8 +3,8 @@
 @section('title', 'Register')
 
 @section('content')
-<div class="container mt-4">
-    <div class="glass-card spacing px-4 py-4">
+<div class="container pt-5 mt-4">
+    <div class="data-card p-4">
         <div class="row">
             <div class="col-12">
                 <div class="text-center text-m text-lg-start">
@@ -22,7 +22,7 @@
                             {{-- Form --}}
                             <form @submit="validateForm" method="POST" action="{{ route('register') }}" id="registration-form" novalidate>
                                 @csrf
-                                <h2 class="mb-5">Registrazione</h2>
+                                <h1 class="mb-5 text-center">Registrazione</h1>
                                 <div class="mb-4 row">
     
                                     {{-- Nome del ristorante--}}
@@ -179,14 +179,10 @@
                                     <div class="col-md-12 text-center">
                                         
                                         {{-- Bottone registrazione --}}
-                                        <button type="submit" class="btn-outline-index text-white fw-semibold green ms-1 px-3 py-2 rounded-pill align-items-center text-white fw-semibold me-2">
-                                            <i class="fa-solid fa-floppy-disk me-2"></i>Registrati
+                                        <button type="submit" class="data-btn green">
+                                            Registrati
                                         </button>
-                                        
-                                        {{-- Bottone reset --}}
-                                        <button type="reset" class="btn-outline-index text-white fw-semibold yellow ms-1 px-3 py-2 rounded-pill align-items-center text-white fw-semibold me-3">
-                                            <i class="fa-solid fa-arrows-rotate me-2"></i>Reset
-                                        </button>
+
                                     </div>
                                 </div>
                             </form>

@@ -1,24 +1,16 @@
-.navbar {
-    background-color: rgba(255, 255, 255, 0.20);
-    backdrop-filter: blur(10px);
+header {
+    min-height: 80px;
+    background-image: linear-gradient(to left, #1e498b, #006fac, #0095bd, #00b8c0, #49daba);
+    background-size: cover;
     font-weight: 600;
 
-    a {
-        color: #ffffff !important;
-    }
-
-    .on-hover {
-        border-radius: 20px;
-
-        &:hover {
-            border-radius: 20px;
-            background-color: rgba(235, 235, 235, 0.5);
-        }
+    .navbar {
+        height: 100%;
     }
 
 }
 
 #logo {
-    width: 65px;
+    width: 60px;
     height: auto;
 }

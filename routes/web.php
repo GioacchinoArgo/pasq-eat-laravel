@@ -3,7 +3,7 @@
 
 use App\Http\Controllers\Admin\RestaurantController;
 use App\Http\Controllers\Admin\DishController;
-use App\Http\Controllers\Admin\RestaurantOrderController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -21,9 +21,7 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
-    if (Auth::user()) return redirect()->route('admin.restaurants.show', Auth::user()->restaurant->id);
-
-    return view('home');
+    return redirect()->route('register');
 });
 
 Route::prefix('/admin')->middleware(['auth'])->name('admin.')->group(function () {
@@ -51,9 +49,13 @@ Route::middleware('auth')->group(function () {
     Route::prefix('admin')->name('admin.')->group(function () {
 
         // Rotte Admin Restaurant CRUD
-        Route::get('/restaurants/{restaurant}/orders', [RestaurantOrderController::class, 'orders'])->name('restaurants.orders');
         Route::get('/restaurants/{restaurant}', [RestaurantController::class, 'show'])->name('restaurants.show');
         Route::put('/restaurants/{restaurant}', [RestaurantController::class, 'update'])->name('restaurants.update');
+
+        // Rotte degli ordini
+        Route::get('/orders/graphs', [OrderController::class, 'graphs'])->name('orders.graphs');
+        Route::get('/orders/{order}', [OrderController::class, 'show'])->name('orders.show');
+        Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
     });
 });
 

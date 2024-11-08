@@ -4,7 +4,7 @@
 
 @section('content')
 <section class="p-3 my-5">
-    <div class="glass-card spacing w-75 px-4 pb-4 card-color">    
+    <div class="data-card spacing w-75 px-4 pb-4">    
         <div class="card-header pt-3 pb-4">
             <div class="col">
                 <h1 class="card-title text-center">{{$dish->name}}</h1>
@@ -60,13 +60,13 @@
                 <div class="button-group">
                     <div class="gap-2 mt-4 d-flex align-items-center justify-content-between justify-content-md-between">
                         {{--# TORNA INDIETRO --}}
-                        <a href="{{route('admin.dishes.index')}}" class="btn-outline-index text-white fw-semibold gray ms-1 px-3 py-2 rounded-pill d-flex align-items-center text-white fw-semibold">
+                        <a href="{{route('admin.dishes.index')}}" class="data-btn gray ms-1 px-3 py-2 rounded-pill d-flex align-items-center fw-semibold">
                             <i class="fa-solid fa-left-long"></i>
                             <span class="d-none ms-2 d-lg-block">Torna indietro</span>
                         </a>
                         <div class="d-flex gap-2 justify-content-md-end">
                             {{--# EDIT --}}
-                            <a href="{{ route('admin.dishes.edit', $dish->id)}}" class="btn-outline-index text-white fw-semibold yellow ms-1 px-3 py-2 rounded-pill d-flex align-items-center edit">
+                            <a href="{{ route('admin.dishes.edit', $dish->id)}}" class="data-btn orange ms-1 px-3 py-2 rounded-pill d-flex align-items-center fw-semibold">
                                 <i class="fas fa-pencil"></i>
                                 <span class="d-none ms-2 d-lg-block">Modifica</span>
                             </a>
@@ -74,7 +74,7 @@
                             <form action="{{ route('admin.dishes.destroy', $dish->id) }}" method="POST" id="delete-form">
                                 @csrf
                                 @method('DELETE')
-                                <button class="btn-outline-index text-white fw-semibold red ms-1 px-3 py-2 rounded-pill d-flex align-items-center text-center">
+                                <button class="data-btn red ms-1 px-3 py-2 rounded-pill d-flex align-items-center fw-semibold">
                                     <i class="far fa-trash-can"></i>
                                     <span class="d-none ms-2 d-lg-block">Elimina</span>
                                 </button>

@@ -2709,7 +2709,7 @@ class DishSeeder extends Seeder
 
             // Antipasti
             [
-                'restaurant_id' => 42,
+                'restaurant_id' => 41,
                 'name' => 'Cig Köfte',
                 'availability' => true,
                 'ingredients' => 'Carne macinata, bulgur, peperoncino, spezie',
@@ -2720,7 +2720,7 @@ class DishSeeder extends Seeder
             ],
             // Piatti principali
             [
-                'restaurant_id' => 42,
+                'restaurant_id' => 41,
                 'name' => 'Lahmacun',
                 'availability' => true,
                 'ingredients' => 'Base di pizza sottile, carne macinata, cipolla, pomodoro, prezzemolo',
@@ -2730,7 +2730,7 @@ class DishSeeder extends Seeder
                 'image' => ''
             ],
             [
-                'restaurant_id' => 42,
+                'restaurant_id' => 41,
                 'name' => 'Shish Kebab',
                 'availability' => true,
                 'ingredients' => 'Spiedini di carne di agnello marinata, peperoni, cipolla',
@@ -2741,7 +2741,7 @@ class DishSeeder extends Seeder
             ],
             // Dolci
             [
-                'restaurant_id' => 42,
+                'restaurant_id' => 41,
                 'name' => 'Künefe',
                 'availability' => true,
                 'ingredients' => 'Pasta fillo, formaggio, sciroppo di zucchero',

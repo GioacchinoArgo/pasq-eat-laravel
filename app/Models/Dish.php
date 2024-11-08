@@ -17,7 +17,7 @@ class Dish extends Model
 
     public function orders()
     {
-        return $this->belongsToMany(Order::class);
+        return $this->belongsToMany(Order::class)->withPivot('price', 'quantity',  'total_price');
     }
 
     public function restaurant()
@@ -43,6 +43,6 @@ class Dish extends Model
     // Accessor
     public function image(): Attribute
     {
-        return Attribute::make(fn ($value) => $value && app('request')->is('api/*') ? url('storage/' . $value) : $value);
+        return Attribute::make(fn($value) => $value && app('request')->is('api/*') ? url('storage/' . $value) : $value);
     }
 }

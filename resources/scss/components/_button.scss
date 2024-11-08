@@ -1,68 +1,61 @@
-.btn-outline {
-    color: #000;
-    background-color: transparent;
+.data-btn {
+    color: #fff !important;
+    font-weight: 600;
+    text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.8);
     text-decoration: none;
-    border: 2px solid $white_btn;
-    font-size: 16px;
-    backdrop-filter: blur(15px);
-    transition: background-color 0.3s ease;
+    border: none;
+    padding: 8px 13px;
+    border-radius: 25px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    transition: background-color 0.4s ease;
 }
 
-.btn-outline-index {
-    color: $white_btn;
-    background-color: transparent;
-    text-decoration: none;
-    border: 2px solid $white;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
+.badge-btn {
+    width: 100px;
+    display: block;
+    text-align: center;
 }
 
-.btn-outline-delete {
-    color: #000;
-    background-color: $light_green;
-    border: 1px solid $white_btn;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
+
+.green {
+    background-color: $green;
+
+    &:hover {
+        background-color: $hover_green;
+    }
 }
 
+
+.orange {
+    background-color: $orange;
+
+    &:hover {
+        background-color: $hover_orange;
+    }
+}
+
+
+.red {
+    background-color: #DD2C2F;
+
+    &:hover {
+        background-color: #E35053;
+    }
+}
 
 
 .blue {
-    &:hover {
-        color: #f8f9fa;
-        background-color: $blue;
-        border-color: $blue;
-    }
-}
+    background-color: #023E8A;
 
-.red {
     &:hover {
-        color: $white;
-        background-color: $red;
-        border-color: $red;
-    }
-}
-
-.yellow {
-    &:hover {
-        color: $white;
-        background-color: $yellow;
-        border-color: $yellow;
-    }
-}
-
-.green {
-    &:hover {
-        color: $white;
-        background-color: $green;
-        border-color: $green;
+        background-color: #0077B6;
     }
 }
 
 .gray {
+    background-color: $gray;
+
     &:hover {
-        color: $white;
-        background-color: $gray;
-        border-color: $gray;
+        background-color: $hover_gray;
     }
 }

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignIdFor(Order::class)->constrained()->cascadeOnDelete();
             $table->decimal('price')->required();
             $table->integer('quantity')->required();
+            $table->decimal('total_price')->required();
             $table->timestamps();
         });
     }

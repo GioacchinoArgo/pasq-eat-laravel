@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Restaurant;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,7 +14,7 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('restaurant_id')->required();
+            $table->foreignIdFor(Restaurant::class)->nullable()->constrained()->cascadeOnDelete();
             $table->decimal('total', 10, 2)->required();
             $table->boolean('status')->default(false);
             $table->string('name')->required();

@@ -179,6 +179,10 @@ class DishController extends Controller
             abort(404);
         };
 
+        $dish->availability = 0;
+
+        $dish->update();
+
         $dish->delete();
         //Flash data toast
 
