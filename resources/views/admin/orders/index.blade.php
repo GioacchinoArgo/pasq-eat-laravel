@@ -15,7 +15,7 @@
                       <th class="d-none d-lg-table-cell">Cognome</th>
                       <th class="d-none d-xl-table-cell col-email">Email</th>
                       <th>Indirizzo</th>
-                      <th>Cell</th>
+                      <th class="d-none d-lg-table-cell">Cell</th>
                       <th>Totale</th>
                       <th></th>
                     </tr>
@@ -41,7 +41,7 @@
                         {{--Indirizzo--}}
                         <td class="text-center">{{$order->address}}</td>
                         {{--Numero Telefonico--}}
-                        <td class="text-center">{{$order->phone}}</td>
+                        <td class="text-center d-none d-lg-table-cell">{{$order->phone}}</td>
                         {{--Prezzo Totale--}}
                         <td class="text-center"><strong>{{$order->total}}€</strong></td>
                         <td class="text-center">
@@ -56,7 +56,7 @@
                     @endforelse
                     <tr>
                         {{-- Totale Oridini --}}
-                        <td colspan="5" class="text-center pb-4 fs-4 d-lg-none">
+                        <td colspan="4" class="text-center pb-4 fs-4 d-lg-none">
                             <div class="ciccio mb-4 mx-auto border-top rounded border-secondary-subtle w-50"></div>
                             Totale ordine: 
                             <strong>{{number_format($total_orders, 2)}} €</strong>

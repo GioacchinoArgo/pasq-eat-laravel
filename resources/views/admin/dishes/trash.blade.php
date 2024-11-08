@@ -22,7 +22,7 @@
           <th class="d-none d-lg-table-cell">Portata</th>
           <th class="d-none d-lg-table-cell">Dieta</th>
           <th>Prezzo</th>
-          <th>Ultima modifica</th>
+          <th class="d-none d-sm-table-cell">Ultima modifica</th>
           <th></th>
         </tr>
       </thead>
@@ -66,7 +66,7 @@
             </td>
             {{--Prezzo--}}
             <td class="text-center">{{$dish->price}} €</td>
-            <td class="text-center">{{$dish->getFormattedDate('updated_at', 'd/m/Y H:i')}}</td>
+            <td class="text-center d-none d-sm-table-cell">{{$dish->getFormattedDate('updated_at', 'd/m/Y H:i')}}</td>
             <td>
               <div class="d-flex gap-2 flex-column flex-xl-row align-items-center justify-content-end">
                 {{--# COLLEGAMENTO A SHOW --}}

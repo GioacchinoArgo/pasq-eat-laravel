@@ -11,7 +11,7 @@
             <table class="text-center">
                 <thead>
                     <tr>
-                        <th>Immagine</th>
+                        <th class="d-none d-sm-table-cell">Immagine</th>
                         <th>Piatto</th>
                         <th>Quantità</th>
                         <th>Prezzo Prodotto</th>
@@ -26,7 +26,7 @@
 
                     @foreach ($dishes as $dish)
                         <tr>
-                            <td class="text-center d-flex justify-content-center">
+                            <td class="text-center d-none d-sm-table-cell d-flex justify-content-center">
                                 <div class="index-img mx-auto">
                                   @if ($dish->image)
                                       <img src="{{asset('storage/' . $dish->image)}}" alt="foto-{{$dish->slug}}" class="img-fluid rounded-circle">
@@ -42,7 +42,12 @@
                     @endforeach
                     
                     <tr>
-                        <td colspan="4" class="text-center pt-0 pb-4 fs-4">
+                        <td colspan="3" class="d-sm-none text-center pt-0 pb-4 fs-4">
+                            <div class="ciccio mb-4 mx-auto border-top rounded border-secondary-subtle w-50"></div>
+                            Totale ordine: 
+                            <strong>{{number_format($total_order, 2)}} €</strong>
+                        </td>
+                        <td colspan="4" class="d-none d-sm-table-cell text-center pt-0 pb-4 fs-4">
                             <div class="ciccio mb-4 mx-auto border-top rounded border-secondary-subtle w-50"></div>
                             Totale ordine: 
                             <strong>{{number_format($total_order, 2)}} €</strong>
