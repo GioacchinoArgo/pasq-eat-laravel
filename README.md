@@ -170,7 +170,5 @@ delle vendite
 #### Eccezioni: /
 
 # Collaboratori
-- ## [Giordano Guidi](https://github.com/GiordanoGuidi)
 - ## [Gioacchino Argo](https://github.com/GioacchinoArgo)
-- ## [Francesco Pasquinoni](https://github.com/PasquiFra)
 - ## [Santiago Galvan Colorado](https://github.com/SantiGalvan)
