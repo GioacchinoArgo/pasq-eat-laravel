@@ -121,7 +121,7 @@
                         </div>
         
                         {{-- INPUT GROUP PRICE --}}
-                        <div class="mb-3 col-6 col-sm-4 col-xl-5">
+                        <div class="mb-3 col-6 col-md-4 col-xl-5">
                             <label class="form-label label ms-3" for="price">
                                 Prezzo piatto
                                 <span class="text-danger"><strong><sup>*</sup></strong></span>
@@ -137,7 +137,7 @@
                         </div>
         
                         {{-- INPUT IMMAGINE --}}
-                        <div class="col-6 col-sm-6 col-xl-5 mb-3">
+                        <div class="col-6 col-md-5 col-xl-5 mb-3">
                             <div class="d-flex flex-column">
                                 <label class="form-label label ms-3">Upload Immagine</label>
                                 <input type="file" name="image" id="uploadBtn" class="form-control bg-transparent border-dark-light rounded-pill @error('image') is-invalid @elseif(old('image')) is-valid @enderror">
@@ -155,21 +155,21 @@
                         </div>
 
                         {{-- CAMPO PREVIEW IMAGE --}}
-                        <div class="col-2 col-md-2 align-items-center d-none d-md-flex">
+                        <div class="col-md-3 col-xl-2 align-items-center justify-content-center d-none d-md-flex">
                             <img id="preview" src="{{ old('image', $dish->image)
                             ? asset('storage/' . old('image', $dish->image)) 
-                            : asset('/images/default-dish.png')}}" 
+                            : 'https://www.altavod.com/assets/images/poster-placeholder.png'}}" 
                             alt="{{ $dish->slug }}" class="img-fluid">
                         </div>
 
-                        <p class="asterisk mb-3 text-center me-3">I campi contrassegnati con <span class="text-danger"><strong><sup>*</sup></strong></span> sono obbligatori</p>
+                        <p class="asterisk my-2 text-center">I campi contrassegnati con <span class="text-danger"><strong><sup>*</sup></strong></span> sono obbligatori</p>
 
                         {{-- Bottoni --}}
                         <div class="col-12 d-flex justify-content-between pt-2">
-                            <a href="{{route('admin.dishes.index')}}" class="data-btn green rounded-pill gray fw-semibold ms-1 px-3 py-2"><i class="fa-solid fa-left-long me-2"></i> Torna indietro</a>
-                            <div>
-                                <button class="data-btn rounded-pill green fw-semibold ms-1 px-3 py-2" type="submit"><i class="fa-solid fa-floppy-disk me-2"></i>Salva</button>
-                                <button class="data-btn rounded-pill red fw-semibold ms-1 px-3 py-2" type="reset"><i class="fa-solid fa-arrows-rotate me-2"></i>Svuota</button>
+                            <a href="{{route('admin.dishes.index')}}" class="data-btn d-flex green rounded-pill gray fw-semibold ms-1 px-4 px-sm-3 py-2"><i class="fa-solid fa-left-long me-sm-2"></i><span class="d-none d-sm-inline">Torna indietro</span></a>
+                            <div class="d-flex">
+                                <button class="data-btn d-flex align-items-center rounded-pill green fw-semibold ms-1 px-4 px-sm-3 py-2" type="submit"><i class="fa-solid fa-floppy-disk me-sm-2"></i><span class="d-none d-sm-inline">Salva</span></button>
+                                <button class="data-btn d-flex align-items-center rounded-pill red fw-semibold ms-1 px-4 px-sm-3 py-2" type="reset"><i class="fa-solid fa-arrows-rotate me-sm-2"></i><span class="d-none d-sm-inline">Svuota</span></button>
                             </div>
                         </div>
 
